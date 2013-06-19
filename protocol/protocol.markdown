@@ -26,7 +26,7 @@ supported by the Encyclopedia of Life Rubenstein Fellowship and by NSF DEB-09187
 
 # Fish anatomy
 
-![Anatomical directions and fin names](anatomy.png)
+![Anatomical directions and fin names](../img/anatomy.png)
 
 Anatomical locations
 
@@ -46,7 +46,7 @@ Fish fins
 
 # Landmarks
 
-![Overview of all landmarks](landmarks-small.jpg)
+![Overview of all landmarks](../img/landmarks-small.jpg)
 
 You will need to mark:
 
@@ -57,28 +57,28 @@ You will need to mark:
 * 2 anal fin
 * 4 caudal fin
 
-![3 mouth landmarks](mouth.jpg)
+![3 mouth landmarks](../img/mouth.jpg)
 
 **Mouth**: Mark the upper (m1) and lower (m2) tips of the mouth opening, as well as the point that shows the angle (m3) of the mouth opening.
 
-![1 eye landmark](eye.jpg)
+![1 eye landmark](../img/eye.jpg)
 
 **Eye**: Mark the center (e1) of the eye. If finding the center is difficult, draw two perpendicular lines through the oval of the eye. The center of the eye is at the intersection of those two lines.
 
-![2 dorsal fin landmarks](dorsal.jpg)
+![2 dorsal fin landmarks](../img/dorsal.jpg)
 
 **Dorsal fin**: Mark where the first (d1) and last (d2) fin ray attach to the body of the fish.
 
-![2 anal fin landmarks](anal.jpg)
+![2 anal fin landmarks](../img/anal.jpg)
 
 **Anal fin**: Mark where the first (a1) and last (a2) fin ray attaches to the body of the
 fish.
 
-![2 pectoral fin landmarks](pectoral.jpg)
+![2 pectoral fin landmarks](../img/pectoral.jpg)
 
 **Pectoral fin**: Mark where the dorsal (p1) and ventral (p2) fin ray attach to the body of the
 fish.
 
-![4 caudal fin landmarks](caudal.jpg)
+![4 caudal fin landmarks](../img/caudal.jpg)
 
 **Caudal fin**: Mark the dorsal (c1) and ventral (c2) base of the caudal fin. This is usually the narrow part between the fin and the rest of the fish body. Then, mark the spot where the dorsal (c3) and ventral (c4) caudal fin rays attach to the rest of the caudal fin. You can usually distinguish the start of the caudal fin rays by a change in color or texture.
