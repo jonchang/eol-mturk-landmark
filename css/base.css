@@ -1,19 +1,5 @@
-body {
-    // padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-}
-/* prevent drag */
-img {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-
 .container {
-    width: 1324px;
+    width: 1260px;
 }
 
 #submitbox {
@@ -40,10 +26,10 @@ canvas {
 
 #infobox {
     position:absolute;
-    left: 1034px;
+    left: 1030px;
     top: 0px;
 }
 
 .help {
-    max-width: 300px;
+    max-width: 230px;
 }
