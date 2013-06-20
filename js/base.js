@@ -65,13 +65,13 @@ function create_buttons() {
             div.title = cats[key];
             div.setAttribute("data-toggle", "tooltip");
             toolbox.appendChild(div);
-            
+
             // make canvases
             var canvas = canvas_template.cloneNode(false);
             canvas.id = key + "_canvas";
             canvasbox.appendChild(canvas);
             canvas.getContext("2d").globalAlpha = 0.85;
-            
+
         }
     }
     var tools = $(".tool");
@@ -159,15 +159,15 @@ function draw_landmark(x, y, tool) {
     var radius = 7;
     var ctx = canvas[0].getContext("2d");
     ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-    
+
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fillStyle = "white";
     ctx.fill();
-    
+
     ctx.strokeStyle = "#666";
     ctx.stroke();
-    
+
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -191,7 +191,7 @@ function clearSelection() {
 
 function next_tool() {
     var tool = get_active_tool();
-    
+
 }
 
 var shortcuts = {
@@ -295,6 +295,6 @@ $(document).ready(function() {
     if (turkGetParam("review", "") !== "") {
         review_on(decode(turkGetParam("review")));
     }
-    
-    
+
+
 });
