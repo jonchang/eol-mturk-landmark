@@ -110,6 +110,37 @@ function update_data(name, value) {
     landmark_data[name] = value;
     $("#form-marks")[0].value = JSON.stringify(landmark_data);
     update_submit();
+    draw_lines();
+}
+
+var neighbors = [
+    [["M1", "M2"], ["M2", "M3"]],
+    [["P1", "P2"]],
+    [["D1", "D2"]],
+    [["A1", "A2"]],
+    [["C1", "C2"], ["C2", "C3"], ["C3", "C4"]],
+];
+
+function draw_line(p1, p2, ctx) {
+    ctx.beginPath();
+    ctx.moveTo(p1[0], p1[1]);
+    ctx.lineTo(p2[0], p2[1]);
+    ctx.closePath();
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+}
+
+function draw_lines() {
+    var canvas = $("#appcanvas")[0];
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    neighbors.map(function (arr) {
+        for (var ii = 0; ii < arr.length; ii++) {
+            if (arr[ii][0] in landmark_data && arr[ii][1] in landmark_data) {
+                draw_line(landmark_data[arr[ii][0]], landmark_data[arr[ii][1]], ctx);
+            }
+        }
+    });
 }
 
 
