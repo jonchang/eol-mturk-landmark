@@ -59,7 +59,7 @@ You will need to mark:
 
 ![3 mouth landmarks](../img/mouth.jpg)
 
-**Mouth**: Mark the upper (m1) and lower (m2) tips of the mouth opening, as well as the point that shows the angle (m3) of the mouth opening.
+**Mouth**: Mark the upper (m1) and lower (m3) tips of the mouth opening, as well as the point that shows the angle (m2) of the mouth opening.
 
 ![1 eye landmark](../img/eye.jpg)
 
@@ -67,12 +67,11 @@ You will need to mark:
 
 ![2 dorsal fin landmarks](../img/dorsal.jpg)
 
-**Dorsal fin**: Mark where the first (d1) and last (d2) fin ray attach to the body of the fish.
+**Dorsal fin**: Mark where the first (d1) and last (d2) fin ray attach to the body of the fish. Some species will have a fleshy "border" that lies between the main body of the fish and its fin rays; in this case, you should mark where the fin ray attaches to this "border".
 
 ![2 anal fin landmarks](../img/anal.jpg)
 
-**Anal fin**: Mark where the first (a1) and last (a2) fin ray attaches to the body of the
-fish.
+**Anal fin**: Mark where the first (a1) and last (a2) fin ray attaches to the body of the fish. Some species will have a fleshy "border" that lies between the main body of the fish and its fin rays; in this case, you should mark where the fin ray attaches to this "border".
 
 ![2 pectoral fin landmarks](../img/pectoral.jpg)
 
@@ -81,4 +80,4 @@ fish.
 
 ![4 caudal fin landmarks](../img/caudal.jpg)
 
-**Caudal fin**: Mark the dorsal (c1) and ventral (c2) base of the caudal fin. This is usually the narrow part between the fin and the rest of the fish body. Then, mark the spot where the dorsal (c3) and ventral (c4) caudal fin rays attach to the rest of the caudal fin. You can usually distinguish the start of the caudal fin rays by a change in color or texture.
+**Caudal fin**: Mark the dorsal (c1) and ventral (c4) base of the caudal fin. This is usually the narrow part between the fin and the rest of the fish body. Then, mark the spot where the dorsal (c2) and ventral (c3) caudal fin rays attach to the rest of the caudal fin. You can usually distinguish the start of the caudal fin rays by a change in color or texture, and it is characteristically "fleshy" on the anterior portion.
