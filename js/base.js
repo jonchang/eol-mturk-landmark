@@ -6,12 +6,12 @@ var cats = {
     "M2": 'Mouth',
     "M3": 'Mouth',
     "E1": 'Eye',
+    "P1": 'Pectoral fin',
+    "P2": 'Pectoral fin',
     "D1": 'Dorsal fin',
     "D2": 'Dorsal fin',
     "A1": 'Anal fin',
     "A2": 'Anal fin',
-    "P1": 'Pectoral fin',
-    "P2": 'Pectoral fin',
     "C1": 'Caudal fin',
     "C2": 'Caudal fin',
     "C3": 'Caudal fin',
@@ -22,19 +22,19 @@ var cats = {
 
 var helps = {
     "M1": 'Mark the front upper tip of the mouth opening. (shortcut: m)',
-    "M2": 'Mark the front lower tip of the mouth opening. (shortcut: m)',
-    "M3": 'Mark the back of the mouth, showing the angle of the opening. (shortcut: m)',
+    "M2": 'Mark the back of the mouth, showing the angle of the opening. (shortcut: m)',
+    "M3": 'Mark the front lower tip of the mouth opening. (shortcut: m)',
     "E1": 'Mark the center of the eye. (shortcut: e)',
-    "D1": 'Mark the front of the dorsal fin, where the first fin ray attaches to the body of the fish. (shortcut: d)',
-    "D2": 'Mark the back of the dorsal fin, where the last fin ray attaches to the body of the fish. (shortcut: d)',
-    "A1": 'Mark the front of the anal fin, where the first fin ray attaches to the body of the fish. (shortcut: a)',
-    "A2": 'Mark the back of the anal fin, where the last fin ray attaches to the body of the fish. (shortcut: a)',
-    "P1": 'Mark the top of the pectoral fin, where the fin ray attaches to the body of the fish. (shortcut: t)',
-    "P2": 'Mark the bottom of the pectoral fin, where the fin ray attaches to the body of the fish. (shortcut: t)',
-    "C1": 'Mark the top of the caudal fin, where the fleshy part of the caudal fin (peduncle) attaches to the body of the fish. (shortcut: c)',
-    "C2": 'Mark the bottom of the caudal fin, where the fleshy part of the caudal fin (peduncle) attaches to the body of the fish. (shortcut: c)',
-    "C3": 'Mark the spot where the top of the fin ray attaches to the rest of the caudal fin. This usually is where a change in the color or texture of the fin occurs. (shortcut: c)',
-    "C4": 'Mark the spot where the bottom of the fin ray attaches to the rest of the caudal fin. This usually is where a change in the color or texture of the fin occurs. (shortcut: c)'
+    "P1": 'Mark the top of the pectoral fin, where the fin ray attaches to the fleshy body of the fish. (shortcut: t)',
+    "P2": 'Mark the bottom of the pectoral fin, where the fin ray attaches to the fleshy body of the fish. (shortcut: t)',
+    "D1": 'Mark the front of the rearmost dorsal fin, where the first fin ray attaches to the fleshy body of the fish. (shortcut: d)',
+    "D2": 'Mark the back of the rearmost dorsal fin, where the last fin ray attaches to the fleshy body of the fish. (shortcut: d)',
+    "A1": 'Mark the front of the anal fin, where the first fin ray attaches to the fleshy body of the fish. (shortcut: a)',
+    "A2": 'Mark the back of the anal fin, where the last fin ray attaches to the fleshy body of the fish. (shortcut: a)',
+    "C1": 'Mark the top of the caudal fin, where the fleshy part of the caudal fin attaches to the body of the fish. This is usually the narrowest part of the fish. (shortcut: c)',
+    "C2": 'Mark the spot where the top of the fin ray attaches to the fleshy part of the caudal fin. There is usually a change in the color or texture of the fin occurs. (shortcut: c)',
+    "C3": 'Mark the spot where the bottom of the fin ray attaches to the fleshy part of the caudal fin. There is usually a change in the color or texture of the fin occurs. (shortcut: c)',
+    "C4": 'Mark the bottom of the caudal fin, where the fleshy part of the caudal fin attaches to the body of the fish. This tends to be the narrowest part of the fish. (shortcut: c)'
 };
 
 function create_image(src) {
@@ -160,7 +160,7 @@ var shortcuts = {
     "a": ["A1", "A2"],
     "t": ["P1", "P2"],
     "c": ["C1", "C2", "C3", "C4"],
-    "f": ["M1", "M2", "M3", "E1", "D1", "D2", "A1", "A2", "P1", "P2", "C1", "C2", "C3", "C4"]
+    "f": Object.keys(cats)
 }
 
 function evt_keydown(evt) {
