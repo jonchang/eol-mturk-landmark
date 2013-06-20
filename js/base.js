@@ -37,6 +37,15 @@ var helps = {
     "C4": 'Mark the bottom of the caudal fin, where the fleshy part of the caudal fin attaches to the body of the fish. This tends to be the narrowest part of the fish. (shortcut: c)'
 };
 
+var helpimgs = {
+    "Mouth": "img/mouth.jpg",
+    "Eye": "img/eye.jpg",
+    "Dorsal fin": "img/dorsal.jpg",
+    "Anal fin": "img/anal.jpg",
+    "Pectoral fin": "img/pectoral.jpg",
+    "Caudal fin": "img/caudal.jpg"
+}
+
 function create_image(src) {
     "use strict";
     $("#canvasbg")[0].src = src;
