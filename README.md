@@ -20,6 +20,12 @@ For extra speed, you can compress and inline the app file. This requires [node.j
 
 To build the help instructions, you'll need [pandoc](http://johnmacfarlane.net/pandoc/). Navigate to the `protocol/` directory and execute either `build.sh` or `build.ps1`, depending on your operating system. This will create a HTML and PDF file of the landmarking protocol.
 
+## TODO
+
+* Better review interface
+* Rip out dependencies on jQuery and bootstrap
+* Streamline HIT posting
+
 ## Acknowledgements
 
 This research is supported by an [Encyclopedia of Life Rubenstein Fellowship](http://eol.org/info/fellows) to Jonathan Chang.
