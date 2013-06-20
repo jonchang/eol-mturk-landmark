@@ -33,3 +33,7 @@ canvas {
 .help {
     max-width: 230px;
 }
+
+#review {
+    display: none;
+}

@@ -143,19 +143,20 @@ function draw_lines() {
     });
 }
 
-
-function landmark(evt) {
-    clearSelection();
-    var tool = get_active_tool();
-    var canvas = $("#" + tool + "_canvas");
-    if (!canvas.length) return;
-
+function landmark (evt) {
     var appbox = $("#appbox")[0];
     var x = evt.pageX - appbox.offsetLeft;
     var y = evt.pageY - appbox.offsetTop;
+    draw_landmark(x, y, get_active_tool());
+}
+
+
+function draw_landmark(x, y, tool) {
+    clearSelection();
+    var canvas = $("#" + tool + "_canvas");
+    if (!canvas.length) return;
 
     var radius = 7;
-    
     var ctx = canvas[0].getContext("2d");
     ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
     
@@ -233,6 +234,22 @@ function evt_submit (evt) {
     }
 }
 
+function evt_review (evt) {
+    var parsed = JSON.parse($("#review")[0].value);
+    for (var ii in parsed) {
+        if (parsed.hasOwnProperty(ii))
+            draw_landmark(parsed[ii][0], parsed[ii][1], ii);
+    }
+}
+
+function review_on(txt) {
+    var rev = $("#review");
+    rev.css("display", "block");
+    rev.on("change", evt_review);
+    rev[0].value = txt;
+    evt_review()
+}
+
 function update_submit () {
     var have = Object.keys(landmark_data).length | 0;
     var want = Object.keys(cats).length | 0;
@@ -274,6 +291,9 @@ $(document).ready(function() {
             form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
         }
         update_submit();
+    }
+    if (turkGetParam("review", "") !== "") {
+        review_on(decode(turkGetParam("review")));
     }
     
     
