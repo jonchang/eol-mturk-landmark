@@ -44,40 +44,36 @@ Fish fins
 * Anal fin: The fin that is on the ventral side of the fish, past the anus.
 * Caudal fin: The tail fin of the fish. The caudal fin has two main parts: the part where the backbone extends into the caudal fin, and the part that contains the fin rays. These two can usually be distinguished by a change in color or texture.
 
-# Landmarks
+# Things to digitize
 
-![Overview of all landmarks](../img/landmarks-small.jpg)
+## Landmarks
 
-You will need to mark:
+* Upper and lower jaw tips of mouth opening, plus angle of opening (back of mouth)
+* Dorsal fin (anterior and posterior insertion of fin ray)
+* Caudal fin (dorsal and ventral insertion of fin ray)
+* Anal fin (anterior and posterior insertion of fin ray)
+* Pectoral fin (dorsal and ventral insertion of fin ray)
+* Anterior and posterior side of the eye
 
-* 3 mouth
-* 1 eye
-* 2 dorsal fin
-* 2 pectoral fin
-* 2 anal fin
-* 4 caudal fin
+## Semilandmarks
 
-![3 mouth landmarks](../img/mouth.jpg)
+* Curve between mouth landmark and anterior dorsal fin insertion lanldmark
+* Margin of dorsal fin
+* Margin of anal fin
+* Curve between mouth landmark and anterior fin ray of the ventral fin
 
-**Mouth**: Mark the upper (m1) and lower (m3) tips of the mouth opening, as well as the point that shows the angle (m2) of the mouth opening.
+## Linear measurements
+* Standard length (mouth landmark to caudal fin ray insertion landmark)
+* Depth (biggest dorsal to ventral distance, excluding fins)
 
-![1 eye landmark](../img/eye.jpg)
+## Bruno remarks
 
-**Eye**: Mark the center (e1) of the eye. If finding the center is difficult, draw two perpendicular lines through the oval of the eye. The center of the eye is at the intersection of those two lines.
-
-![2 dorsal fin landmarks](../img/dorsal.jpg)
-
-**Dorsal fin**: Mark where the first (d1) and last (d2) fin ray attach to the body of the fish. Some species will have a fleshy "border" that lies between the main body of the fish and its fin rays; in this case, you should mark where the fin ray attaches to this "border".
-
-![2 anal fin landmarks](../img/anal.jpg)
-
-**Anal fin**: Mark where the first (a1) and last (a2) fin ray attaches to the body of the fish. Some species will have a fleshy "border" that lies between the main body of the fish and its fin rays; in this case, you should mark where the fin ray attaches to this "border".
-
-![2 pectoral fin landmarks](../img/pectoral.jpg)
-
-**Pectoral fin**: Mark where the dorsal (p1) and ventral (p2) fin ray attach to the body of the
-fish.
-
-![4 caudal fin landmarks](../img/caudal.jpg)
-
-**Caudal fin**: Mark the dorsal (c1) and ventral (c4) base of the caudal fin. This is usually the narrow part between the fin and the rest of the fish body. Then, mark the spot where the dorsal (c2) and ventral (c3) caudal fin rays attach to the rest of the caudal fin. You can usually distinguish the start of the caudal fin rays by a change in color or texture, and it is characteristically "fleshy" on the anterior portion.
+* 11-17 may not be biologically relevant (hard to estimate epaxial area from external morphology)
+* Redefine 11 as "top of the operculum"
+* 13 may be difficult to get as not every species has an obvious "elbow"
+* Include most posterior of operculum as landmark, so distance from 2 can give an idea of cranium length
+* Measure depth
+* Forehead semilandmark may show little variation
+* Include tip of mandible to get an estimate of mandible length with 1 or 14
+* Linear measurements: cranium length, eye length, standard length, depth
+* Ratios: eye:cranium, cranium:SL, depth:SL, deepest part:SL
