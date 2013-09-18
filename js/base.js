@@ -1,6 +1,19 @@
 /*jslint browser: true, vars: true, passfail: true*/
 /*global $, jQuery*/
 
+
+if (!String.prototype.supplant) {
+    String.prototype.supplant = function (o) {
+        return this.replace(
+            /\{([^{}]*)\}/g,
+            function (a, b) {
+                var r = o[b];
+                return typeof r === 'string' || typeof r === 'number' ? r : a;
+            }
+        );
+    };
+}
+
 var cats = {
     "M1": 'Mouth',
     "M2": 'Mouth',
@@ -48,24 +61,17 @@ var helpimgs = {
 
 function create_image(src) {
     "use strict";
-    $("#canvasbg")[0].src = src;
+    $("#canvasbg").attr("src", src);
 }
 
 function create_buttons() {
     "use strict";
-    var toolbox = $("#toolbox")[0],
+    var toolbox = $("#toolbox"),
         canvasbox = $("#canvasbox")[0],
         canvas_template = $("#appcanvas")[0];
     for (var key in cats) {
         if (cats.hasOwnProperty(key)) {
-            // make buttons
-            var div = document.createElement("div");
-            div.className = "btn tool";
-            div.id = div.textContent = key;
-            div.title = cats[key];
-            div.setAttribute("data-toggle", "tooltip");
-            toolbox.appendChild(div);
-
+            toolbox.append('<label class="btn btn-default tool" id="{key}" data-toggle="tooltip"><input type="radio" name="tools">{key}</label>'.supplant({key: key}));
             // make canvases
             var canvas = canvas_template.cloneNode(false);
             canvas.id = key + "_canvas";
