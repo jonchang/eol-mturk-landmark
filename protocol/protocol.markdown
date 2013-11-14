@@ -54,12 +54,13 @@ Fish fins
 * Anal fin (anterior and posterior insertion of fin ray)
 * Pectoral fin (dorsal and ventral insertion of fin ray)
 * Anterior and posterior side of the eye
+* Top and bottom of gill cover opening, as well as gill cover's most posterior point
 
 ## Semilandmarks
 
-* Curve between mouth landmark and anterior dorsal fin insertion lanldmark
-* Margin of dorsal fin
-* Margin of anal fin
+* Curve between mouth landmark and anterior dorsal fin insertion landmark
+* Curve of body along dorsal fin
+* Curve of body along anal fin
 * Curve between mouth landmark and anterior fin ray of the ventral fin
 
 ## Linear measurements
