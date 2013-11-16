@@ -210,6 +210,7 @@ var tool_types = (function () {
             for (var jj = 0; jj < ctx.pts.length - 1; jj++) {
                 var curdist = dist(ctx.pts[jj], ctx.pts[jj+1]);
                 running_dist += curdist;
+                // XXX: handle case where > 1 semilandmark occurs on 1 line segment
                 if (running_dist > running_step) {
                     var frac = running_step / running_dist;
                     var newx = (1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0];
