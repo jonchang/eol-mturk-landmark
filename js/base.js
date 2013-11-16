@@ -2,6 +2,50 @@
 /*global $, jQuery*/
 
 
+var groups = {
+    "Mouth": {
+        contains: ["M1", "M2", "M3"],
+        help: "3 points that describe the mouth of the fish, showing the angle of the fish's jaw.",
+        image: ""
+    },
+    "Caudal fin": {
+        contains: ["C1", "C2"],
+        help: "2 points that describe the caudal fin (the tail of the fish).",
+        image: ""
+    },
+    "Pectoral fin": {
+        contains: ["P1", "P2"],
+        help: "2 points that describe the pectoral fin (on the fish's \"chest\")",
+        image: ""
+    },
+    "Gill cover": {
+        contains: ["O1", "O2", "O3"],
+        help: "3 points that describe the gill cover (operculum)",
+        image: ""
+    },
+    "Eye": {
+        contains: ["E1", "E2"],
+        help: "2 points that describe the eye.",
+        image: ""
+    },
+    "Head curves": {
+        contains: ["FH", "CH"],
+        help: "Two curves that describe the 'head' of the fish.",
+        image: ""
+    },
+    "Fin curves": {
+        contains: ["DF", "AF"],
+        help: "Two curves that describe fins of the fish.",
+        image: ""
+    },
+    "Dimensions": {
+        contains: ["SL", "DP"],
+        help: "Two lines that describe the height and length of the fish.",
+        image: ""
+    }
+};
+
+
 var tool_defs = {
     "M1": {
         kind: "point",
@@ -51,27 +95,27 @@ var tool_defs = {
         kind: "point",
         help: "A point on the eye closest to the tail of the fish."
     },
-    "SF": {
+    "FH": {
         kind: "curve",
         help: "The curve of the body from the tip of the mouth to the start of the dorsal fin (the fish's \"forehead\")."
     },
-    "SD": {
+    "DF": {
         kind: "curve",
         help: "The curve of the body along the dorsal fin."
     },
-    "SA": {
+    "AF": {
         kind: "curve",
         help: "The curve of the body along the anal fin."
     },
-    "SC": {
+    "CH": {
         kind: "curve",
         help: "The curve of the body from the tip of the mouth to the start of the ventral fin (the fish's \"chin\")."
     },
-    "LL": {
+    "SL": {
         kind: "line",
         help: "The horizontal line from the tip of the mouth to the beginning of the caudal fin (between points C1 and C2)."
     },
-    "LD": {
+    "DP": {
         kind: "line",
         help: "The vertical line along the tallest (i.e., deepest) part of the fish, excluding fins."
     }
