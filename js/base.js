@@ -124,6 +124,16 @@ var tool_defs = {
 function create_image(src) {
     "use strict";
     $("#canvasbg").attr("src", src);
+    $("#canvasbg").on("load", function (e) {
+        var appcanvas = $("<canvas/>").attr({
+            id: "appcanvas",
+            width: $(e.target).width(),
+            height: $(e.target).height()
+        });
+        console.log(appcanvas);
+        $("#canvasbox").append(appcanvas);
+        create_buttons();
+    });
 }
 
 var tool_types = (function () {
@@ -382,8 +392,7 @@ $(document).ready(function() {
     cbox.on("mousedown mouseup", evt_mouse);
     $(document).keypress(evt_keydown);
     $("#mturk_form").submit(evt_submit);
-    create_buttons();
-    create_image(decode(turkGetParam("url", "test.jpg")));
+    create_image(decode(turkGetParam("url", "protocol/fish_example.jpg")));
     $("#assignmentId")[0].value = turkGetParam("assignmentId");
     if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         var submit = $("#submitButton")[0]
