@@ -30,17 +30,17 @@ var groups = {
     },
     "Head curves": {
         contains: ["FH", "CH"],
-        help: "Two curves that describe the 'head' of the fish.",
+        help: "2 curves that describe the 'head' of the fish.",
         image: ""
     },
     "Fin curves": {
         contains: ["DF", "AF"],
-        help: "Two curves that describe fins of the fish.",
+        help: "2 curves that describe fins of the fish.",
         image: ""
     },
     "Dimensions": {
         contains: ["SL", "DP"],
-        help: "Two lines that describe the height and length of the fish.",
+        help: "2 lines that describe the height and length of the fish.",
         image: ""
     }
 };
