@@ -125,13 +125,15 @@ function create_image(src) {
     "use strict";
     $("#canvasbg").attr("src", src);
     $("#canvasbg").on("load", function (e) {
+        var img = $(e.target);
         var appcanvas = $("<canvas/>").attr({
             id: "appcanvas",
-            width: $(e.target).width(),
-            height: $(e.target).height()
+            width: img.width(),
+            height: img.height()
         });
         console.log(appcanvas);
         $("#canvasbox").append(appcanvas);
+        $(".container").css("min-width", img.css("width"));
         create_buttons();
     });
 }
@@ -395,7 +397,7 @@ $(document).ready(function() {
     create_image(decode(turkGetParam("url", "protocol/fish_example.jpg")));
     $("#assignmentId")[0].value = turkGetParam("assignmentId");
     if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-        var submit = $("#submitButton")[0]
+        var submit = $("#submitButton")[0];
         submit.disabled = true;
         submit.textContent = "Please ACCEPT the HIT first!";
         submit.className = "btn btn-danger btn-large";

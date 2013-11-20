@@ -1,5 +1,8 @@
+/* Disable Bootstrap responsive layout -- this a desktop app */
 .container {
-    width: 1260px;
+    max-width: none !important;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 #submitbox {
@@ -22,16 +25,6 @@ canvas {
     top: 0px;
     z-index: 1;
     cursor: crosshair;
-}
-
-#infobox {
-    position:absolute;
-    left: 1030px;
-    top: 0px;
-}
-
-.help {
-    max-width: 230px;
 }
 
 #review {
