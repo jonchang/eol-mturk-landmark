@@ -298,19 +298,14 @@ function clearSelection() {
     }
 }
 
-var shortcuts = {
-}
-
 function evt_keydown(evt) {
     var key = String.fromCharCode(evt.keyCode || evt.which);
-    if (key in shortcuts) {
-        var idx = shortcuts[key].indexOf(active_tool())
-        if (idx >= 0) {
-            var newtool = shortcuts[key][idx + 1] || shortcuts[key][0];
-        } else {
-            var newtool = shortcuts[key][0];
+    if (key == "f") {
+        var tools = Object.keys(tool_defs);
+        var idx = tools.indexOf(active_tool());
+        if (idx > -1 && idx < tools.length) {
+            $("#" + (tools[idx + 1])).click();
         }
-        $("#" + newtool).click();
     }
 }
 
