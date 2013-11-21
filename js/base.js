@@ -375,8 +375,7 @@ function evt_mouse(e) {
     tool_types[tool_defs[tool].kind](args);
 }
 
-// initialization
-$(document).ready(function() {
+function initialize() {
     cbox = $("#canvasbox"); // global canvasbox
     cbox.on("mousedown mouseup", evt_mouse);
     $(document).keypress(evt_keydown);
@@ -401,6 +400,4 @@ $(document).ready(function() {
     if (turkGetParam("review", "") !== "") {
         review_on(decode(turkGetParam("review")));
     }
-
-
-});
+}
