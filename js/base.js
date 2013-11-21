@@ -123,7 +123,6 @@ function create_image(src) {
             width: img.width(),
             height: img.height()
         });
-        console.log(appcanvas);
         $("#canvasbox").append(appcanvas);
         $(".container").css("min-width", img.css("width"));
         create_buttons();
@@ -256,7 +255,7 @@ function create_buttons() {
     for (var key in tool_defs) {
         if (tool_defs.hasOwnProperty(key)) {
             toolbox.append('<label class="btn btn-default tool" id="' + key +
-                           '" data-toggle="tooltip"><input type="radio" name="tools">' + key + '</label>');
+                           '"><input type="radio" name="tools">' + key + '</label>');
             // make canvases
             var canvas = canvas_template.cloneNode(false);
             canvas.id = key + "_canvas";
@@ -265,7 +264,6 @@ function create_buttons() {
         }
     }
     var tools = $(".tool");
-    tools.tooltip();
     tools.click(function() {
         active_tool($(this).attr("id")); // set this as the current tool
     });
