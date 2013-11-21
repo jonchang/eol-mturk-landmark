@@ -4,8 +4,8 @@
 
 var groups = {
     "Mouth": {
-        contains: ["M1", "M2", "M3"],
-        help: "3 points that describe the mouth of the fish, showing the angle of the fish's jaw.",
+        contains: ["M1"],
+        help: "1 point that shows the angle of the fish's jaw.",
         image: ""
     },
     "Caudal fin": {
@@ -49,15 +49,7 @@ var groups = {
 var tool_defs = {
     "M1": {
         kind: "point",
-        help: "The front upper tip of the mouth opening."
-    },
-    "M2": {
-        kind: "point",
         help: "The back of the mouth, showing the angle of the mouth opening."
-    },
-    "M3": {
-        kind: "point",
-        help: "The front lower tip of the mouth opening."
     },
     "C1": {
         kind: "point",
@@ -97,7 +89,7 @@ var tool_defs = {
     },
     "FH": {
         kind: "curve",
-        help: "The curve of the body from the tip of the mouth to the start of the dorsal fin (the fish's \"forehead\")."
+        help: "The curve of the body from the top tip of the mouth to the start of the dorsal fin (the fish's \"forehead\")."
     },
     "DF": {
         kind: "curve",
@@ -109,7 +101,7 @@ var tool_defs = {
     },
     "CH": {
         kind: "curve",
-        help: "The curve of the body from the tip of the mouth to the start of the ventral fin (the fish's \"chin\")."
+        help: "The curve of the body from the bottom tip of the mouth to the start of the ventral fin (the fish's \"chin\")."
     },
     "SL": {
         kind: "line",
