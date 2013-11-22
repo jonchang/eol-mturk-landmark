@@ -162,7 +162,7 @@ var tool_types = (function () {
         ctx.textBaseline = "middle";
         ctx.font = "5pt sans-serif";
         ctx.fillText(args.tool, args.x, args.y);
-        update_data(args.tool, [[args.x, args.y]]);
+        return [args.x, args.y];
     }
 
     function draw_line(args) {
@@ -179,13 +179,13 @@ var tool_types = (function () {
         ctx.stroke();
         draw_point({x: ctx.startx, y: ctx.starty, tool: args.tool, ctx: ctx});
         draw_point({x: args.x, y: args.y, tool: args.tool, ctx: ctx});
-        update_data(args.tool, [[ctx.startx, ctx.starty], [args.x, args.y]]);
+        return [[ctx.startx, ctx.starty], [args.x, args.y]];
     }
 
     function draw_curve(args) {
         var ctx = args.ctx;
         function rect_at(pp) {
-            ctx.fillRect(pp[0]-1,pp[1]-1,3,3);
+            ctx.fillRect(pp[0] - 1, pp[1] - 1, 3, 3);
         }
         function dist(p1, p2) {
             return Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
@@ -243,14 +243,15 @@ var tool_types = (function () {
             semilandmarks.unshift([ctx.startx, ctx.starty]);
             semilandmarks.push([ctx.endx, ctx.endy]);
             draw_point({x: ctx.endx, y: ctx.endy, tool: args.tool, ctx: ctx});
-            update_data(args.tool, semilandmarks);
+            return semilandmarks;
         }
     }
 
     function clear(fn) {
         return function (args) {
             args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
-            fn(args);
+            var ret = fn(args);
+            args.callback(args.tool, ret);
         };
     }
 
@@ -360,7 +361,8 @@ function evt_mouse(e) {
                 y: e.pageY - appbox.offsetTop,
                 evt: e.type,
                 tool: tool,
-                ctx: $("#" + tool + "_canvas")[0].getContext("2d")
+                ctx: $("#" + tool + "_canvas")[0].getContext("2d"),
+                callback: update_data
                };
     tool_types[tool_defs[tool].kind](args);
 }
