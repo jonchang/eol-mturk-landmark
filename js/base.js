@@ -341,17 +341,6 @@ function update_submit () {
     }
 }
 
-function get_canvas(tool) {
-    return $("#" + tool + "_canvas")[0].getContext("2d");
-}
-
-function get_evt_xy (evt) {
-    var appbox = $("#appbox")[0];
-    var x = evt.pageX - appbox.offsetLeft;
-    var y = evt.pageY - appbox.offsetTop;
-    return [x, y];
-}
-
 function evt_mouse(e) {
     if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
     if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
