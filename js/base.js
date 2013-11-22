@@ -113,19 +113,34 @@ var tool_defs = {
     }
 };
 
-function create_image(src) {
+function init_canvas(img) {
     "use strict";
-    $("#canvasbg").attr("src", src);
+    $("#canvasbg").attr("src", img);
+    // wait for the image to load
     $("#canvasbg").on("load", function (e) {
         var img = $(e.target);
+        var canvasbox = $("#canvasbox");
         var appcanvas = $("<canvas/>").attr({
             id: "appcanvas",
             width: img.width(),
             height: img.height()
         });
-        $("#canvasbox").append(appcanvas);
+        canvasbox.append(appcanvas);
         $(".container").css("min-width", img.css("width"));
-        create_buttons();
+        var toolbox = $("#toolbox");
+        for (var key in tool_defs) {
+            if (tool_defs.hasOwnProperty(key)) {
+                var newtool = $('<label class="btn btn-default tool" id="' + key +
+                               '"><input type="radio" name="tools">' + key + '</label>');
+                newtool.on("click", function () { active_tool($(this).attr('id')) });
+                toolbox.append(newtool);
+                // make canvases
+                var canvas = appcanvas.clone(false).attr("id", key + "_canvas");
+                canvasbox.append(canvas);
+                                canvas[0].getContext("2d").globalAlpha = 0.85;
+            }
+        }
+        $(".tool")[0].click();
     });
 }
 
@@ -247,29 +262,6 @@ var tool_types = (function () {
     };
 }());
 
-function create_buttons() {
-    "use strict";
-    var toolbox = $("#toolbox"),
-        canvasbox = cbox[0],
-        canvas_template = $("#appcanvas")[0];
-    for (var key in tool_defs) {
-        if (tool_defs.hasOwnProperty(key)) {
-            toolbox.append('<label class="btn btn-default tool" id="' + key +
-                           '"><input type="radio" name="tools">' + key + '</label>');
-            // make canvases
-            var canvas = canvas_template.cloneNode(false);
-            canvas.id = key + "_canvas";
-            canvasbox.appendChild(canvas);
-            canvas.getContext("2d").globalAlpha = 0.85;
-        }
-    }
-    var tools = $(".tool");
-    tools.click(function() {
-        active_tool($(this).attr("id")); // set this as the current tool
-    });
-    tools[0].click();
-}
-
 function active_tool(set_to) {
     if (set_to) $("#active-tool").attr("value", set_to);
     return $("#active-tool").attr("value");
@@ -378,7 +370,7 @@ function initialize() {
     cbox.on("mousedown mouseup", evt_mouse);
     $(document).keypress(evt_keydown);
     $("#mturk_form").submit(evt_submit);
-    create_image(decode(turkGetParam("url", "protocol/fish_example.jpg")));
+    init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")));
     $("#assignmentId")[0].value = turkGetParam("assignmentId");
     if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         var submit = $("#submitButton")[0];
