@@ -1,118 +1,6 @@
 /*jslint browser: true, vars: true*/
 /*global $, jQuery*/
 
-
-var groups = {
-    "Mouth": {
-        contains: ["M1"],
-        help: "1 point that shows the angle of the fish's jaw.",
-        image: ""
-    },
-    "Caudal fin": {
-        contains: ["C1", "C2"],
-        help: "2 points that describe the caudal fin (the tail of the fish).",
-        image: ""
-    },
-    "Pectoral fin": {
-        contains: ["P1", "P2"],
-        help: "2 points that describe the pectoral fin (on the fish's \"chest\")",
-        image: ""
-    },
-    "Gill cover": {
-        contains: ["O1", "O2", "O3"],
-        help: "3 points that describe the gill cover (operculum)",
-        image: ""
-    },
-    "Eye": {
-        contains: ["E1", "E2"],
-        help: "2 points that describe the eye.",
-        image: ""
-    },
-    "Head curves": {
-        contains: ["FH", "CH"],
-        help: "2 curves that describe the 'head' of the fish.",
-        image: ""
-    },
-    "Fin curves": {
-        contains: ["DF", "AF"],
-        help: "2 curves that describe fins of the fish.",
-        image: ""
-    },
-    "Dimensions": {
-        contains: ["SL", "DP"],
-        help: "2 lines that describe the height and length of the fish.",
-        image: ""
-    }
-};
-
-
-var tool_defs = {
-    "M1": {
-        kind: "point",
-        help: "The back of the mouth, showing the angle of the mouth opening."
-    },
-    "C1": {
-        kind: "point",
-        help: "Where the top of the caudal fin meets the body."
-    },
-    "C2": {
-        kind: "point",
-        help: "Where the bottom of the caudal fin meets the body."
-    },
-    "P1": {
-        kind: "point",
-        help: "Where the top of the pectoral fin meets the body."
-    },
-    "P2": {
-        kind: "point",
-        help: "Where the bottom of the pectoral fin meets the body."
-    },
-    "O1": {
-        kind: "point",
-        help: "The top point of the gill cover opening."
-    },
-    "O2": {
-        kind: "point",
-        help: "The point of the gill cover opening closest to the tail of the fish."
-    },
-    "O3": {
-        kind: "point",
-        help: "The bottom point of the gill cover opening."
-    },
-    "E1": {
-        kind: "point",
-        help: "A point on the eye closest to the head of the fish."
-    },
-    "E2": {
-        kind: "point",
-        help: "A point on the eye closest to the tail of the fish."
-    },
-    "FH": {
-        kind: "curve",
-        help: "The curve of the body from the top tip of the mouth to the start of the dorsal fin (the fish's \"forehead\")."
-    },
-    "DF": {
-        kind: "curve",
-        help: "The curve of the body along the dorsal fin."
-    },
-    "AF": {
-        kind: "curve",
-        help: "The curve of the body along the anal fin."
-    },
-    "CH": {
-        kind: "curve",
-        help: "The curve of the body from the bottom tip of the mouth to the start of the ventral fin (the fish's \"chin\")."
-    },
-    "SL": {
-        kind: "line",
-        help: "The horizontal line from the tip of the mouth to the beginning of the caudal fin (between points C1 and C2)."
-    },
-    "DP": {
-        kind: "line",
-        help: "The vertical line along the tallest (i.e., deepest) part of the fish, excluding fins."
-    }
-};
-
 function init_canvas(img) {
     "use strict";
     $("#canvasbg").attr("src", img);
@@ -360,26 +248,33 @@ function evt_mouse(e) {
 
 function initialize() {
     cbox = $("#canvasbox"); // global canvasbox
-    cbox.on("mousedown mouseup", evt_mouse);
-    $(document).keypress(evt_keydown);
-    $("#mturk_form").submit(evt_submit);
-    init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")));
-    $("#assignmentId")[0].value = turkGetParam("assignmentId");
-    if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-        var submit = $("#submitButton")[0];
-        submit.disabled = true;
-        submit.textContent = "Please ACCEPT the HIT first!";
-        submit.className = "btn btn-danger btn-large";
-        $("canvas").css("cursor", "not-allowed");
-        update_submit = function() {};
-    } else {
-        $(".alert").hide();
-        var form = document.getElementById('mturk_form');
-        if (document.referrer && /workersandbox/.test(document.referrer)) {
-            form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
+
+    tool_defs = ""; // global tool definitions
+    $.getJSON("js/tool_defs.json", function(data) {
+        tool_defs = data;
+        cbox.on("mousedown mouseup", evt_mouse);
+        $(document).keypress(evt_keydown);
+        $("#mturk_form").submit(evt_submit);
+        init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")));
+
+        $("#assignmentId")[0].value = turkGetParam("assignmentId");
+        if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+            var submit = $("#submitButton")[0];
+            submit.disabled = true;
+            submit.textContent = "Please ACCEPT the HIT first!";
+            submit.className = "btn btn-danger btn-large";
+            $("canvas").css("cursor", "not-allowed");
+            update_submit = function() {};
+        } else {
+            $(".alert").hide();
+            var form = document.getElementById('mturk_form');
+            if (document.referrer && /workersandbox/.test(document.referrer)) {
+                form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
+            }
+            update_submit();
         }
-        update_submit();
-    }
+    });
+
     if (turkGetParam("review", "") !== "") {
         review_on(decode(turkGetParam("review")));
     }

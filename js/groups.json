@@ -1,0 +1,42 @@
+{
+    "Mouth": {
+        "contains": ["M1"],
+        "help": "1 point that shows the angle of the fish's jaw.",
+        "image": ""
+    },
+    "Caudal fin": {
+        "contains": ["C1", "C2"],
+        "help": "2 points that describe the caudal fin (the tail of the fish).",
+        "image": ""
+    },
+    "Pectoral fin": {
+        "contains": ["P1", "P2"],
+        "help": "2 points that describe the pectoral fin (on the fish's \"chest\")",
+        "image": ""
+    },
+    "Gill cover": {
+        "contains": ["O1", "O2", "O3"],
+        "help": "3 points that describe the gill cover (operculum)",
+        "image": ""
+    },
+    "Eye": {
+        "contains": ["E1", "E2"],
+        "help": "2 points that describe the eye.",
+        "image": ""
+    },
+    "Head curves": {
+        "contains": ["FH", "CH"],
+        "help": "2 curves that describe the 'head' of the fish.",
+        "image": ""
+    },
+    "Fin curves": {
+        "contains": ["DF", "AF"],
+        "help": "2 curves that describe fins of the fish.",
+        "image": ""
+    },
+    "Dimensions": {
+        "contains": ["SL", "DP"],
+        "help": "2 lines that describe the height and length of the fish.",
+        "image": ""
+    }
+}
