@@ -229,8 +229,8 @@ var tool_types = (function () {
                 running_dist += current_dist;
                 while (running_dist > running_step) {
                     var frac = (running_step + current_dist - running_dist) / current_dist;
-                    var newx = (1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0];
-                    var newy = (1 - frac) * ctx.pts[jj][1] + frac * ctx.pts[jj+1][1];
+                    var newx = Math.round((1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0]);
+                    var newy = Math.round((1 - frac) * ctx.pts[jj][1] + frac * ctx.pts[jj+1][1]);
                     semilandmarks.push([newx, newy]);
                     ctx.fillStyle = "cyan";
                     rect_at([newx, newy]);
@@ -241,7 +241,7 @@ var tool_types = (function () {
             semilandmarks.unshift([ctx.startx, ctx.starty]);
             semilandmarks.push([ctx.endx, ctx.endy]);
             draw_point({x: ctx.endx, y: ctx.endy, tool: args.tool, ctx: ctx});
-            return semilandmarks;
+            return {points: semilandmarks, curve: ctx.pts};
         }
     }
 
