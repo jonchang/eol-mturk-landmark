@@ -209,7 +209,6 @@ var tool_types = (function () {
         for (var ii = 0; ii < ctx.pts.length; ii++) {
             ctx.lineTo(ctx.pts[ii][0], ctx.pts[ii][1]);
         }
-        ctx.strokeStyle = "red";
         ctx.stroke();
         draw_point({x: ctx.startx, y: ctx.starty, tool: args.tool, ctx: ctx});
         if (ctx.endx && ctx.endy) {
@@ -233,7 +232,7 @@ var tool_types = (function () {
                     var newx = (1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0];
                     var newy = (1 - frac) * ctx.pts[jj][1] + frac * ctx.pts[jj+1][1];
                     semilandmarks.push([newx, newy]);
-                    ctx.fillStyle = "yellow";
+                    ctx.fillStyle = "cyan";
                     rect_at([newx, newy]);
                     running_step += step;
                 }
