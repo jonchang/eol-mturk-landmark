@@ -137,7 +137,7 @@ function init_canvas(img) {
                 // make canvases
                 var canvas = appcanvas.clone(false).attr("id", key + "_canvas");
                 canvasbox.append(canvas);
-                                canvas[0].getContext("2d").globalAlpha = 0.85;
+                canvas[0].getContext("2d").globalAlpha = 0.85;
             }
         }
         $(".tool")[0].click();
@@ -250,8 +250,7 @@ var tool_types = (function () {
     function clear(fn) {
         return function (args) {
             args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
-            var ret = fn(args);
-            args.callback(args.tool, ret);
+            args.callback(args.tool, fn(args));
         };
     }
 
