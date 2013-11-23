@@ -228,6 +228,11 @@ var tool_types = (function () {
                 var current_dist = dist(ctx.pts[jj], ctx.pts[jj+1]);
                 running_dist += current_dist;
                 while (running_dist > running_step) {
+                    /*  frac                              ------
+                     *  running_dist    |----------------|------*--------|
+                     *  running_step     -----------------------
+                     *  current_dist                      ---------------
+                     */
                     var frac = (running_step + current_dist - running_dist) / current_dist;
                     var newx = Math.round((1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0]);
                     var newy = Math.round((1 - frac) * ctx.pts[jj][1] + frac * ctx.pts[jj+1][1]);
