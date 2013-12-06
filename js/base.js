@@ -269,6 +269,7 @@ function update_submit () {
 }
 
 function evt_mouse(e) {
+    var cbox = $("#canvasbox");
     if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
     if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
     var tool = Toolbox.active();
@@ -284,11 +285,12 @@ function evt_mouse(e) {
 }
 
 function initialize() {
-    cbox = $("#canvasbox"); // global canvasbox
+    var cbox = $("#canvasbox");
 
     cbox.on("mousedown mouseup", evt_mouse);
     $(document).keypress(evt_keydown);
     $("#mturk_form").submit(evt_submit);
+
     init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")),
                 function () $.getJSON("js/tool_defs.json").done(Toolbox.init)
                 );
