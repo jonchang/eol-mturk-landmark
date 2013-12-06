@@ -138,18 +138,18 @@ var tool_types = (function () {
         }
     }
 
-    function clear(fn) {
+    function wrapper(fn) {
         return function (args) {
-            args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
-            args.callback(args.tool, fn(args));
+            if (!args.keep) args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
+            if (args.callback) args.callback(args.tool, fn(args));
         };
     }
 
 
     return {
-        point: clear(draw_point),
-        line: clear(draw_line),
-        curve: clear(draw_curve)
+        point: wrapper(draw_point),
+        line: wrapper(draw_line),
+        curve: wrapper(draw_curve)
     };
 }());
 
