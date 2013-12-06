@@ -1,7 +1,7 @@
 /*jslint browser: true, vars: true*/
 /*global $, jQuery*/
 
-function init_canvas(img) {
+function init_canvas(img, callback) {
     "use strict";
     $("#canvasbg").attr("src", img);
     // wait for the image to load
@@ -15,24 +15,73 @@ function init_canvas(img) {
         });
         canvasbox.append(appcanvas);
         $(".container").css("min-width", img.css("width"));
-        var toolbox = $("#toolbox");
+        if (typeof callback == "function") callback();
+    });
+}
+
+var Toolbox = (function () {
+    var tool_defs = {};
+    var toolbox;
+    var tools = {};
+
+    function init(defs, callback) {
+        // set instance variables
+        tool_defs = defs;
+        toolbox = $("#toolbox");
+
+        var has_active_tool = false;
         for (var key in tool_defs) {
             if (tool_defs.hasOwnProperty(key)) {
                 var newtool = $('<label class="btn btn-default tool" id="' + key +
                                '"><input type="radio" name="tools">' + key + '</label>');
-                newtool.on("click", function () { active_tool($(this).attr('id')) });
+                newtool.on("click", function () Toolbox.set($(this).attr('id')));
                 toolbox.append(newtool);
+
                 // make canvases
-                var canvas = appcanvas.clone(false).attr("id", key + "_canvas");
-                canvasbox.append(canvas);
-                canvas[0].getContext("2d").globalAlpha = 0.85;
+                var canvas = $("#appcanvas")
+                var clone = canvas.clone(false).attr("id", key + "_canvas");
+                $("#canvasbox").append(clone);
+                clone[0].getContext("2d").globalAlpha = 0.85;
+                tools[key] = clone[0];
+
+                if (!has_active_tool) {
+                    newtool.click();
+                    has_active_tool = true;
+                }
             }
         }
-        $(".tool")[0].click();
-    });
-}
+        if (typeof callback == "function") callback();
+    }
 
-var tool_types = (function () {
+    function get_canvas(tool_name) {
+        return tools[tool_name];
+    }
+
+    function get() {
+        return $("#active-tool").attr("value");
+    }
+
+    function set(set_to) {
+        $("#active-tool").attr("value", set_to);
+        return Toolbox.get();
+    }
+
+    function type(tool) {
+        return tool_defs[tool].kind;
+    }
+
+    return {
+        init: init,
+        tools: tools,
+        get_canvas: get_canvas,
+        get: get,
+        set: set,
+        type: type
+    }
+})();
+
+
+var Drawing = (function () {
     "use strict";
     function draw_point(args) {
         var ctx = args.ctx;
@@ -153,11 +202,6 @@ var tool_types = (function () {
     };
 }());
 
-function active_tool(set_to) {
-    if (set_to) $("#active-tool").attr("value", set_to);
-    return $("#active-tool").attr("value");
-}
-
 var landmark_data = {};
 
 function update_data(name, value) {
@@ -182,8 +226,8 @@ function clearSelection() {
 function evt_keydown(evt) {
     var key = String.fromCharCode(evt.keyCode || evt.which);
     if (key == "f") {
-        var tools = Object.keys(tool_defs);
-        var idx = tools.indexOf(active_tool());
+        var tools = Object.keys(Toolbox.tools);
+        var idx = tools.indexOf(Toolbox.get());
         if (idx > -1 && idx < tools.length) {
             $("#" + (tools[idx + 1])).click();
         }
@@ -216,7 +260,7 @@ function review_on(txt) {
 
 function update_submit () {
     var have = Object.keys(landmark_data).length | 0;
-    var want = Object.keys(tool_defs).length | 0;
+    var want = Object.keys(Toolbox.tools).length | 0;
     var submit = $("#submitButton")[0];
     if (have < want) {
         submit.disabled = true;
@@ -234,46 +278,44 @@ function update_submit () {
 function evt_mouse(e) {
     if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
     if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
-    var tool = active_tool();
+    var tool = Toolbox.get();
     var appbox = $("#appbox")[0];
     var args = {x: e.pageX - appbox.offsetLeft,
                 y: e.pageY - appbox.offsetTop,
                 evt: e.type,
                 tool: tool,
-                ctx: $("#" + tool + "_canvas")[0].getContext("2d"),
+                ctx: Toolbox.get_canvas(tool).getContext("2d"),
                 callback: update_data
                };
-    tool_types[tool_defs[tool].kind](args);
+    Drawing[Toolbox.type(tool)](args);
 }
 
 function initialize() {
     cbox = $("#canvasbox"); // global canvasbox
 
-    tool_defs = ""; // global tool definitions
-    $.getJSON("js/tool_defs.json", function(data) {
-        tool_defs = data;
-        cbox.on("mousedown mouseup", evt_mouse);
-        $(document).keypress(evt_keydown);
-        $("#mturk_form").submit(evt_submit);
-        init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")));
+    cbox.on("mousedown mouseup", evt_mouse);
+    $(document).keypress(evt_keydown);
+    $("#mturk_form").submit(evt_submit);
+    init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")),
+                function () $.getJSON("js/tool_defs.json").done(Toolbox.init)
+                );
 
-        $("#assignmentId")[0].value = turkGetParam("assignmentId");
-        if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-            var submit = $("#submitButton")[0];
-            submit.disabled = true;
-            submit.textContent = "Please ACCEPT the HIT first!";
-            submit.className = "btn btn-danger btn-large";
-            $("canvas").css("cursor", "not-allowed");
-            update_submit = function() {};
-        } else {
-            $(".alert").hide();
-            var form = document.getElementById('mturk_form');
-            if (document.referrer && /workersandbox/.test(document.referrer)) {
-                form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
-            }
-            update_submit();
+    $("#assignmentId")[0].value = turkGetParam("assignmentId");
+    if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+        var submit = $("#submitButton")[0];
+        submit.disabled = true;
+        submit.textContent = "Please ACCEPT the HIT first!";
+        submit.className = "btn btn-danger btn-large";
+        $("canvas").css("cursor", "not-allowed");
+        update_submit = function() {};
+    } else {
+        $(".alert").hide();
+        var form = document.getElementById('mturk_form');
+        if (document.referrer && /workersandbox/.test(document.referrer)) {
+            form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
         }
-    });
+        update_submit();
+    }
 
     if (turkGetParam("review", "") !== "") {
         review_on(decode(turkGetParam("review")));
