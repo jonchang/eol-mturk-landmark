@@ -1,4 +1,4 @@
-/*jslint browser: true, vars: true*/
+/*jshint browser: true, strict: true*/
 /*global $, jQuery*/
 
 function init_canvas(img, callback) {
@@ -15,11 +15,12 @@ function init_canvas(img, callback) {
         });
         canvasbox.append(appcanvas);
         $(".container").css("min-width", img.css("width"));
-        if (typeof callback == "function") callback();
+        if (typeof callback === "function") { callback(); }
     });
 }
 
 var Toolbox = (function () {
+    "use strict";
     var tool_defs = {};
     var toolbox;
     var tools = {};
@@ -37,7 +38,7 @@ var Toolbox = (function () {
                 toolbox.append(lab.append(newtool));
 
                 // make canvases
-                var canvas = $("#appcanvas")
+                var canvas = $("#appcanvas");
                 var clone = canvas.clone(false).attr("id", key + "_canvas");
                 $("#canvasbox").append(clone);
                 clone[0].getContext("2d").globalAlpha = 0.85;
@@ -70,7 +71,7 @@ var Toolbox = (function () {
         get_canvas: get_canvas,
         active: active,
         type: type
-    }
+    };
 })();
 
 
@@ -154,8 +155,8 @@ var Drawing = (function () {
             var running_dist = 0;
             var running_step = step;
             var semilandmarks = [];
-            for (var jj = 0; jj < ctx.pts.length - 1; jj++) {
-                var current_dist = dist(ctx.pts[jj], ctx.pts[jj+1]);
+            for (var kk = 0; kk < ctx.pts.length - 1; kk++) {
+                var current_dist = dist(ctx.pts[kk], ctx.pts[kk+1]);
                 running_dist += current_dist;
                 while (running_dist > running_step) {
                     /*  frac                              ------
@@ -164,8 +165,8 @@ var Drawing = (function () {
                      *  current_dist                      ---------------
                      */
                     var frac = (running_step + current_dist - running_dist) / current_dist;
-                    var newx = Math.round((1 - frac) * ctx.pts[jj][0] + frac * ctx.pts[jj+1][0]);
-                    var newy = Math.round((1 - frac) * ctx.pts[jj][1] + frac * ctx.pts[jj+1][1]);
+                    var newx = Math.round((1 - frac) * ctx.pts[kk][0] + frac * ctx.pts[kk+1][0]);
+                    var newy = Math.round((1 - frac) * ctx.pts[kk][1] + frac * ctx.pts[kk+1][1]);
                     semilandmarks.push([newx, newy]);
                     ctx.fillStyle = "cyan";
                     rect_at([newx, newy]);
@@ -198,6 +199,7 @@ var Drawing = (function () {
 var landmark_data = {};
 
 function update_data(name, value) {
+    "use strict";
     landmark_data[name] = value;
     $("#form-marks")[0].value = JSON.stringify(landmark_data);
     update_submit();
@@ -205,18 +207,20 @@ function update_data(name, value) {
 
 // from somewhere on stack overflow
 function clearSelection() {
+    "use strict";
     var sel;
     if(document.selection && document.selection.empty){
         document.selection.empty() ;
     } else if(window.getSelection) {
         sel = window.getSelection();
         if (sel && sel.removeAllRanges) {
-            sel.removeAllRanges()
+            sel.removeAllRanges();
         }
     }
 }
 
 function evt_keydown(evt) {
+    "use strict";
     var key = String.fromCharCode(evt.keyCode || evt.which);
     if (key == "f") {
         var tools = Object.keys(Toolbox.tools);
@@ -228,6 +232,7 @@ function evt_keydown(evt) {
 }
 
 function evt_submit (evt) {
+    "use strict";
     if (update_submit()) {
         // can submit!
     } else {
@@ -236,6 +241,7 @@ function evt_submit (evt) {
 }
 
 function evt_review (evt) {
+    "use strict";
     var parsed = JSON.parse($("#review")[0].value);
     for (var ii in parsed) {
         if (parsed.hasOwnProperty(ii))
@@ -244,14 +250,16 @@ function evt_review (evt) {
 }
 
 function review_on(txt) {
+    "use strict";
     var rev = $("#review");
     rev.css("display", "block");
     rev.on("change", evt_review);
     rev[0].value = txt;
-    evt_review()
+    evt_review();
 }
 
 function update_submit () {
+    "use strict";
     var have = Object.keys(landmark_data).length | 0;
     var want = Object.keys(Toolbox.tools).length | 0;
     var submit = $("#submitButton")[0];
@@ -269,6 +277,7 @@ function update_submit () {
 }
 
 function evt_mouse(e) {
+    "use strict";
     var cbox = $("#canvasbox");
     if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
     if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
@@ -285,6 +294,7 @@ function evt_mouse(e) {
 }
 
 function initialize() {
+    "use strict";
     var cbox = $("#canvasbox");
 
     cbox.on("mousedown mouseup", evt_mouse);
@@ -292,7 +302,7 @@ function initialize() {
     $("#mturk_form").submit(evt_submit);
 
     init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")),
-                function () $.getJSON("js/tool_defs.json").done(Toolbox.init)
+                function () { $.getJSON("js/tool_defs.json").done(Toolbox.init); }
                 );
 
     $("#assignmentId")[0].value = turkGetParam("assignmentId");
