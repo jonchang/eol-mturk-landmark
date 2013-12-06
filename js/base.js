@@ -205,20 +205,6 @@ function update_data(name, value) {
     update_submit();
 }
 
-// from somewhere on stack overflow
-function clearSelection() {
-    "use strict";
-    var sel;
-    if(document.selection && document.selection.empty){
-        document.selection.empty() ;
-    } else if(window.getSelection) {
-        sel = window.getSelection();
-        if (sel && sel.removeAllRanges) {
-            sel.removeAllRanges();
-        }
-    }
-}
-
 function evt_keydown(evt) {
     "use strict";
     var key = String.fromCharCode(evt.keyCode || evt.which);
