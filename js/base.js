@@ -32,10 +32,9 @@ var Toolbox = (function () {
         var has_active_tool = false;
         for (var key in tool_defs) {
             if (tool_defs.hasOwnProperty(key)) {
-                var newtool = $('<label class="btn btn-default tool" id="' + key +
-                               '"><input type="radio" name="tools">' + key + '</label>');
-                newtool.on("click", function () Toolbox.set($(this).attr('id')));
-                toolbox.append(newtool);
+                var lab = $('<label class="btn btn-default" />');
+                var newtool = $('<input type="radio" name="tools" value="' + key + '">' + key + '</input>');
+                toolbox.append(lab.append(newtool));
 
                 // make canvases
                 var canvas = $("#appcanvas")
@@ -57,13 +56,8 @@ var Toolbox = (function () {
         return tools[tool_name];
     }
 
-    function get() {
-        return $("#active-tool").attr("value");
-    }
-
-    function set(set_to) {
-        $("#active-tool").attr("value", set_to);
-        return Toolbox.get();
+    function active() {
+        return $("#toolbox input[type=radio]:checked")[0].value;
     }
 
     function type(tool) {
@@ -74,8 +68,7 @@ var Toolbox = (function () {
         init: init,
         tools: tools,
         get_canvas: get_canvas,
-        get: get,
-        set: set,
+        active: active,
         type: type
     }
 })();
@@ -227,7 +220,7 @@ function evt_keydown(evt) {
     var key = String.fromCharCode(evt.keyCode || evt.which);
     if (key == "f") {
         var tools = Object.keys(Toolbox.tools);
-        var idx = tools.indexOf(Toolbox.get());
+        var idx = tools.indexOf(Toolbox.active());
         if (idx > -1 && idx < tools.length) {
             $("#" + (tools[idx + 1])).click();
         }
@@ -278,7 +271,7 @@ function update_submit () {
 function evt_mouse(e) {
     if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
     if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
-    var tool = Toolbox.get();
+    var tool = Toolbox.active();
     var appbox = $("#appbox")[0];
     var args = {x: e.pageX - appbox.offsetLeft,
                 y: e.pageY - appbox.offsetTop,
