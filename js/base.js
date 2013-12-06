@@ -293,20 +293,27 @@ function evt_mouse(e) {
     Drawing[Toolbox.type(tool)](args);
 }
 
+function get_param (param, default_value) {
+    "use strict";
+    var res = new RegExp(param + "=([^&#]*)").exec(window.location.search);
+    return res && decodeURIComponent(res[1]) || default_value || "";
+}
+
 function initialize() {
     "use strict";
     var cbox = $("#canvasbox");
 
     cbox.on("mousedown mouseup", evt_mouse);
     $(document).keypress(evt_keydown);
-    $("#mturk_form").submit(evt_submit);
+    var form = $("#mturk_form");
+    form.submit(evt_submit);
 
-    init_canvas(decode(turkGetParam("url", "protocol/fish_example.jpg")),
+    init_canvas(get_param("url", "protocol/fish_example.jpg"),
                 function () { $.getJSON("js/tool_defs.json").done(Toolbox.init); }
                 );
 
-    $("#assignmentId")[0].value = turkGetParam("assignmentId");
-    if (turkGetParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+    $("#assignmentId")[0].value = get_param("assignmentId");
+    if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         var submit = $("#submitButton")[0];
         submit.disabled = true;
         submit.textContent = "Please ACCEPT the HIT first!";
@@ -315,14 +322,11 @@ function initialize() {
         update_submit = function() {};
     } else {
         $(".alert").hide();
-        var form = document.getElementById('mturk_form');
-        if (document.referrer && /workersandbox/.test(document.referrer)) {
-            form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
-        }
+        form.action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
         update_submit();
     }
 
-    if (turkGetParam("review", "") !== "") {
-        review_on(decode(turkGetParam("review")));
+    if (get_param("review") !== "") {
+        review_on(get_param("review"));
     }
 }

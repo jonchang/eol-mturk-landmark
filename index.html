@@ -48,7 +48,7 @@
             <textarea rows="3" id="review"></textarea>
 
             <div id="submitbox">
-                <form method="POST" action="https://www.mturk.com/mturk/externalSubmit" class="form-inline" id="mturk_form">
+                <form method="POST" class="form-inline" id="mturk_form" name="mturk_form">
                 <input type="hidden" id="assignmentId" name="assignmentId">
                 <input type="hidden" id="form-marks" name="marks">
                 <input type="text" class="input-xxlarge" name="comments" placeholder="Type comments or feedback here">
@@ -62,7 +62,6 @@
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/json2.js"></script>
-        <script src="js/externalHIT_v1.js"></script>
         <script src="js/base.js"></script>
         <script>
             $(document).ready(initialize);
