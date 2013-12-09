@@ -33,8 +33,13 @@ var Toolbox = (function () {
         var has_active_tool = false;
         for (var key in tool_defs) {
             if (tool_defs.hasOwnProperty(key)) {
-                var lab = $('<label class="btn btn-default" />');
-                var newtool = $('<input type="radio" name="tools" value="' + key + '">' + key + '</input>');
+                var lab = $('<label>').attr("class", "btn btn-default").text(key);
+                var newtool = $('<input>').attr({
+                    type: "radio",
+                    name: "tools",
+                    value: key,
+                    id: key
+                });
                 toolbox.append(lab.append(newtool));
 
                 // make canvases
