@@ -1,66 +1,102 @@
 {
-    "M1": {
+    "J1": {
         "kind": "point",
-        "help": "The back of the mouth, showing the angle of the mouth opening."
+        "anchor": "mouth",
+        "help": "The tip of the upper jaw."
     },
-    "C1": {
+    "J2": {
         "kind": "point",
-        "help": "Where the top of the caudal fin meets the body."
+        "anchor": "mouth",
+        "help": "The intersection of the upper and lower jaw. (This is not simply where the skin meets!)"
     },
-    "C2": {
+    "J3": {
         "kind": "point",
-        "help": "Where the bottom of the caudal fin meets the body."
-    },
-    "P1": {
-        "kind": "point",
-        "help": "Where the top of the pectoral fin meets the body."
-    },
-    "P2": {
-        "kind": "point",
-        "help": "Where the bottom of the pectoral fin meets the body."
-    },
-    "O1": {
-        "kind": "point",
-        "help": "The top point of the gill cover opening."
-    },
-    "O2": {
-        "kind": "point",
-        "help": "The point of the gill cover opening closest to the tail of the fish."
-    },
-    "O3": {
-        "kind": "point",
-        "help": "The bottom point of the gill cover opening."
+        "anchor": "mouth",
+        "help": "The tip of the lower jaw."
     },
     "E1": {
         "kind": "point",
-        "help": "A point on the eye closest to the head of the fish."
+        "anchor": "eye",
+        "help": "The most anterior (forward) margin of the eye at its widest diameter."
     },
     "E2": {
         "kind": "point",
-        "help": "A point on the eye closest to the tail of the fish."
+        "anchor": "eye",
+        "help": "The most posterior (rearward) margin of the eye at its widest diameter."
     },
-    "FH": {
+    "O1": {
+        "kind": "point",
+        "anchor": "operculum",
+        "help": "The top point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+    },
+    "O2": {
+        "kind": "point",
+        "anchor": "operculum",
+        "help": "The posterior (rearward) \"elbow\" of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+    },
+    "O3": {
+        "kind": "point",
+        "anchor": "operculum",
+        "help": "The bottom point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+    },
+    "O4": {
+        "kind": "point",
+        "anchor": "operculum",
+        "help": "The top point of the operculum (gill cover)."
+    },
+    "O5": {
+        "kind": "point",
+        "anchor": "operculum",
+        "help": "The posterior (rearward) point of the operculum (gill cover)."
+    },
+    "P1": {
+        "kind": "point",
+        "anchor": "pectoral-fin",
+        "help": "Top intersection of pectoral fin rays with the base of the pectoral fin."
+    },
+    "P2": {
+        "kind": "point",
+        "anchor": "pectoral-fin",
+        "help": "Bottom intersection of pectoral fin rays with the base of the pectoral fin."
+    },
+    "C1": {
+        "kind": "point",
+        "anchor": "caudal-fin",
+        "help": "Top intersection of the tail fin rays with the body."
+    },
+    "C2": {
+        "kind": "point",
+        "anchor": "caudal-fin",
+        "help": "Bottom intersection of the tail fin rays with the body."
+    },
+    "DH": {
         "kind": "curve",
-        "help": "The curve of the body from the top tip of the mouth to the start of the dorsal fin (the fish's \"forehead\")."
+        "anchor": "dorsal-head-curve",
+        "help": "Curve of the body running from the tip of the upper jaw (J1) to the base of the dorsal fin (DF)."
     },
     "DF": {
         "kind": "curve",
-        "help": "The curve of the body along the dorsal fin."
+        "anchor": "dorsal-fin-base-curve",
+        "help": "Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions."
+    },
+    "VH": {
+        "kind": "curve",
+        "anchor": "ventral-head-curve",
+        "help": "Curve of the body running from the tip of the lower jaw (J3) to the base of the pelvic fin."
     },
     "AF": {
         "kind": "curve",
-        "help": "The curve of the body along the anal fin."
-    },
-    "CH": {
-        "kind": "curve",
-        "help": "The curve of the body from the bottom tip of the mouth to the start of the ventral fin (the fish's \"chin\")."
+        "anchor": "anal-fin-base-curve",
+        "help": "Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions."
     },
     "SL": {
         "kind": "line",
-        "help": "The horizontal line from the tip of the mouth to the beginning of the caudal fin (between points C1 and C2)."
+        "anchor": "measurements",
+        "help": "Line from tip of upper jaw (J1) to midpoint of the base of the tail (between C1 and C2)."
     },
     "DP": {
         "kind": "line",
-        "help": "The vertical line along the tallest (i.e., deepest) part of the fish, excluding fins."
+        "anchor": "measurements",
+        "help": "The longest straight line that can be drawn through the fish from top to the bottom."
     }
 }

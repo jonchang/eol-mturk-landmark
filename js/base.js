@@ -30,7 +30,6 @@ var Toolbox = (function () {
         tool_defs = defs;
         toolbox = $("#toolbox");
 
-        var has_active_tool = false;
         for (var key in tool_defs) {
             if (tool_defs.hasOwnProperty(key)) {
                 var lab = $('<label>').attr("class", "btn btn-default").text(key);
@@ -48,13 +47,19 @@ var Toolbox = (function () {
                 $("#canvasbox").append(clone);
                 clone[0].getContext("2d").globalAlpha = 0.85;
                 tools[key] = clone[0];
-
-                if (!has_active_tool) {
-                    newtool.click();
-                    has_active_tool = true;
-                }
             }
         }
+
+        var radios = $("input[type=radio]");
+        radios.change(function () {
+                update_submit();
+                update_help();
+            }
+        )
+
+        radios[0].click();
+        radios[0].checked = true; // Shouldn't clicking a radio button also check it? :psyduck:
+
         if (typeof callback == "function") callback();
     }
 
@@ -70,12 +75,22 @@ var Toolbox = (function () {
         return tool_defs[tool].kind;
     }
 
+    function help(tool) {
+        return tool_defs[tool].help;
+    }
+
+    function anchor(tool) {
+        return tool_defs[tool].anchor;
+    }
+
     return {
         init: init,
         tools: tools,
         get_canvas: get_canvas,
         active: active,
-        type: type
+        type: type,
+        help: help,
+        anchor: anchor
     };
 })();
 
@@ -208,6 +223,15 @@ function update_data(name, value) {
     landmark_data[name] = value;
     $("#form-marks")[0].value = JSON.stringify(landmark_data);
     update_submit();
+}
+
+function update_help() {
+    var tool = Toolbox.active();
+    var anchor = Toolbox.anchor(tool);
+    var help = Toolbox.help(tool);
+    $("#infobox-content").html(
+        '<b>' + tool + '</b>: ' + help + ' <a href="protocol/protocol.html#' + anchor + '" target="_blank">More info</a>'
+    );
 }
 
 function evt_keydown(evt) {
