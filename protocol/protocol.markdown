@@ -31,65 +31,94 @@ Fin rays are the soft spines that make up a fish's fins. They are clearly visibl
 
 ## Mouth
 
-![J1: The tip of the upper jaw.](img/J1.png)
+![](img/J1.png)
+J1: The tip of the upper jaw.
 
-![J2: The intersection of the upper and lower jaw. This is not simply where the flesh of the upper and lower jaw meet!](img/J2.png)
+![](img/J2.png)
+J2: The intersection of the upper and lower jaw. This is not simply where the flesh of the upper and lower jaw meet!
+![](img/J2_wrong.png)
 
-![J3: The tip of the lower jaw.](img/J3.png)
+![](img/J3.png)
+J3: The tip of the lower jaw.
 
 ## Eye
 
-![E1: The most anterior (forward) margin of the eye at its widest diameter.](img/E1.png)
+![](img/E1.png)
+E1: The most anterior (forward) margin of the eye at its widest diameter.
 
-![E2: The most posterior (rearward) margin of the eye at its widest diameter.](img/E2.png)
+![](img/E2.png)
+E2: The most posterior (rearward) margin of the eye at its widest diameter.
 
 ## Operculum
 
-![The preopercule and operculum](img/fish_operculum.png)
+![](img/fish_operculum.png)
 
 The preoperculum points (O1-O3) might not be visible in certain fishes. If you really can't find them place their points at the top-left corner of the image and make a comment in the comment box saying so.
 
-![O1: The top point of the preopercule.](img/O1.png)
+![](img/O1.png)
+O1: The top point of the preopercule.
 
-![O2: The posterior (rearward) \"elbow\" of the preopercule.](img/O2.png)
+![](img/O2.png)
+O2: The posterior (rearward) \"elbow\" of the preopercule.
 
-![O3: The bottom point of the preopercule.](img/O3.png)
+![](img/O3.png)
+O3: The bottom point of the preopercule.
 
-![O4: The top point of the operculum (gill cover).](img/O4.png)
+![](img/O4.png)
+O4: The top point of the operculum (gill cover).
 
-![O5: The posterior (rearward) point of the operculum (gill cover).](img/O5.png)
+![](img/O5.png)
+O5: The posterior (rearward) point of the operculum (gill cover).
 
 ## Pectoral fin
 
-![P1: Top intersection of pectoral fin rays with the base of the pectoral fin.](img/P1.png)
+![](img/P1.png)
+P1: Top intersection of pectoral fin rays with the base of the pectoral fin.
 
-![P2: Bottom intersection of pectoral fin rays with the base of the pectoral fin.](img/P2.png)
+![](img/P2.png)
+P2: Bottom intersection of pectoral fin rays with the base of the pectoral fin.
 
 ## Caudal fin
 
-![C1: Top intersection of the tail fin rays with the body.](img/C1.png)
+![](img/C1.png)
+C1: Top intersection of the tail fin rays with the body.
 
-![C2: Bottom intersection of the tail fin rays with the body.](img/C2.png)
+![](img/C2.png)
+C2: Bottom intersection of the tail fin rays with the body.
 
 
 ## Dorsal head curve
 
-![DH: Curve of the body running from the tip of the upper jaw (J1) to the base of the dorsal fin (DF).](img/DH.png)
+![](img/DH.png)
+DH: Curve of the body running from the [tip of the upper jaw (J1)](#mouth) to the [base of the dorsal fin (DF)](#dorsal-fin).
 
-## Dorsal fin base curve
+## Dorsal fin
 
-![DF: Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions.](img/DF.png)
+![](img/DF.png)
+DF: Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions.
+
+![](img/DM.png)
+DM: Curve of the distal margin of the dorsal fin, from the tip of the first (anterior) fin ray to the last fin ray.
+
 
 ## Ventral head curve
 
-![VH: Curve of the body running from the tip of the lower jaw (J3) to the base of the pelvic fin.](img/VH.png)
+![](img/VH.png)
+VH: Curve of the body running from the [tip of the lower jaw (J3)](#mouth) to the base of the [pelvic fin](#fish-anatomy).
 
-## Anal fin base curve
+## Anal fin
 
-![AF: Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions.](img/AF.png)
+![](img/AF.png)
+AF: Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions.
+
+![](img/AM.png)
+AM: Curve of the distal margin of the anal fin, from the tip of the first (anterior) fin ray to the last fin ray.
+
 
 ## Measurements
 
-![SL: Line from tip of upper jaw (J1) to midpoint of the base of the tail (between C1 and C2).](img/SL.png)
+![](img/SL.png)
+SL: Line from [tip of the upper jaw (J1)](#mouth) to midpoint of the [base of the tail (between C1 and C2)](#caudal-fin).
 
-![DP: The longest straight line that can be drawn through the fish from top to the bottom.](img/DP.png)
+![](img/DP.png)
+DP: The longest straight line that can be drawn through the fish from top to the bottom.

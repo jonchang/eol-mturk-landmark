@@ -76,8 +76,13 @@
     },
     "DF": {
         "kind": "curve",
-        "anchor": "dorsal-fin-base-curve",
+        "anchor": "dorsal-fin",
         "help": "Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions."
+    },
+    "DM": {
+        "kind": "curve",
+        "anchor": "dorsal-fin",
+        "help": "Curve of the distal margin of the dorsal fin, from the tip of the first (anterior) fin ray to the last fin ray."
     },
     "VH": {
         "kind": "curve",
@@ -86,8 +91,13 @@
     },
     "AF": {
         "kind": "curve",
-        "anchor": "anal-fin-base-curve",
+        "anchor": "anal-fin",
         "help": "Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions."
+    },
+    "AM": {
+        "kind": "curve",
+        "anchor": "anal-fin",
+        "help": "Curve of the distal margin of the anal fin, from the tip of the first (anterior) fin ray to the last fin ray."
     },
     "SL": {
         "kind": "line",
