@@ -3,78 +3,93 @@
 
 # Introduction
 
-You will be marking key points on images of fish, which will help determine the
-shape of different fishes and how that affects their performance in the water.
-Please continue reading for a short primer on fish anatomy, and a description
-of the points that you will need to mark on each photograph.
+You will be marking key points on images of fish, which will help determine the shape of different fishes and how that affects their performance in the water. Please continue reading for a short primer on fish anatomy, and a description of the points that you will need to mark on each photograph.
 
-If you have questions, comments, or suggestions for improvement, contact Jonathan
-Chang via email: **jonathan dot chang at ucla dot edu**. This research is
-supported by the Encyclopedia of Life Rubenstein Fellowship and by NSF DEB-0918748.
-
-### Common problems
-
-* **Fin damage**: mark it as best you can and leave a comment in the comment
-  box.
-* **Fin obscured**: make a good guess based on the shape of the visible
-  portion of the fin, and leave a comment indicating this
-* **Can't find caudal fin points**: The caudal fin has two parts: a fleshy
-  part and a part with the fin rays. Points 1 and 2 are where the fleshy part
-  attaches to the rest of the fish body and is usually quite narrow, while
-  points 3 and 4 are where the fin rays begin. See the diagram below -- there
-  is a clear difference between the flesh and the ray, so look for this difference when marking points.
+If you have questions, comments, or suggestions for improvement, contact Jonathan Chang via email: **jonathan dot chang at ucla dot edu**. This research is supported by the Encyclopedia of Life Rubenstein Fellowship and by NSF DEB-0918748.
 
 # Fish anatomy
 
-![Anatomical directions and fin names](../img/anatomy.png)
-
-Anatomical locations
+![Anatomical directions](img/fish_directions.png)
 
 * Anterior: towards the mouth.
 * Posterior: towards the tail.
-* Dorsal: towards the backbone.
-* Ventral: towards the belly.
+* Dorsal: towards the top.
+* Ventral: towards the bottom.
 
-Fish fins
+![](img/fish_fins.png)
 
-* Fin rays are the soft spines that make up a fish's fins. They are clearly
-  visible in the drawing above on each of the labeled fins.
+Fin rays are the soft spines that make up a fish's fins. They are clearly visible in the picture above on each of the labeled fins.
+
 * Pectoral fin: The fins that are on each side of the fish, usually near the eye. You will only see one pectoral fin as the second fin is on the other side of the fish.
-* Dorsal fin: The fins that lie on the back of the fish. Triggerfishes will have two dorsal fins; you will landmark the second (posterior) fin.
-* Anal fin: The fin that is on the ventral side of the fish, past the anus.
-* Caudal fin: The tail fin of the fish. The caudal fin has two main parts: the part where the backbone extends into the caudal fin, and the part that contains the fin rays. These two can usually be distinguished by a change in color or texture.
+* Dorsal fin: The fins that lie on the back of the fish. If a fish has two dorsal fins, you will landmark the first (anterior) fin.
+* Pelvic fin: The fin below the pectoral fin.
+* Anal fin: The fin that is on the ventral side of the fish behind the anus.
+* Caudal fin: The tail fin of the fish. The caudal fin has two main parts: the part where the backbone extends into the caudal fin (caudal peduncle), and the part that contains the fin rays. These can be distinguished by a change in color or texture.
 
-# Things to digitize
 
-## Landmarks
+# Tasks
 
-* Upper and lower jaw tips of mouth opening, plus angle of opening (back of mouth)
-* Dorsal fin (anterior and posterior insertion of fin ray)
-* Caudal fin (dorsal and ventral insertion of fin ray)
-* Anal fin (anterior and posterior insertion of fin ray)
-* Pectoral fin (dorsal and ventral insertion of fin ray)
-* Anterior and posterior side of the eye
-* Top and bottom of gill cover opening, as well as gill cover's most posterior point
+## Mouth
 
-## Semilandmarks
+![J1: The tip of the upper jaw.](img/J1.png)
 
-* Curve between mouth landmark and anterior dorsal fin insertion landmark
-* Curve of body along dorsal fin
-* Curve of body along anal fin
-* Curve between mouth landmark and anterior fin ray of the ventral fin
+![J2: The intersection of the upper and lower jaw. This is not simply where the flesh of the upper and lower jaw meet!](img/J2.png)
 
-## Linear measurements
-* Standard length (mouth landmark to caudal fin ray insertion landmark)
-* Depth (biggest dorsal to ventral distance, excluding fins)
+![J3: The tip of the lower jaw.](img/J3.png)
 
-## Bruno remarks
+## Eye
 
-* 11-17 may not be biologically relevant (hard to estimate epaxial area from external morphology)
-* Redefine 11 as "top of the operculum"
-* 13 may be difficult to get as not every species has an obvious "elbow"
-* Include most posterior of operculum as landmark, so distance from 2 can give an idea of cranium length
-* Measure depth
-* Forehead semilandmark may show little variation
-* Include tip of mandible to get an estimate of mandible length with 1 or 14
-* Linear measurements: cranium length, eye length, standard length, depth
-* Ratios: eye:cranium, cranium:SL, depth:SL, deepest part:SL
+![E1: The most anterior (forward) margin of the eye at its widest diameter.](img/E1.png)
+
+![E2: The most posterior (rearward) margin of the eye at its widest diameter.](img/E2.png)
+
+## Operculum
+
+![The preopercule and operculum](img/fish_operculum.png)
+
+The preoperculum points (O1-O3) might not be visible in certain fishes. If you really can't find them place their points at the top-left corner of the image and make a comment in the comment box saying so.
+
+![O1: The top point of the preopercule.](img/O1.png)
+
+![O2: The posterior (rearward) \"elbow\" of the preopercule.](img/O2.png)
+
+![O3: The bottom point of the preopercule.](img/O3.png)
+
+![O4: The top point of the operculum (gill cover).](img/O4.png)
+
+![O5: The posterior (rearward) point of the operculum (gill cover).](img/O5.png)
+
+## Pectoral fin
+
+![P1: Top intersection of pectoral fin rays with the base of the pectoral fin.](img/P1.png)
+
+![P2: Bottom intersection of pectoral fin rays with the base of the pectoral fin.](img/P2.png)
+
+## Caudal fin
+
+![C1: Top intersection of the tail fin rays with the body.](img/C1.png)
+
+![C2: Bottom intersection of the tail fin rays with the body.](img/C2.png)
+
+
+## Dorsal head curve
+
+![DH: Curve of the body running from the tip of the upper jaw (J1) to the base of the dorsal fin (DF).](img/DH.png)
+
+## Dorsal fin base curve
+
+![DF: Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions.](img/DF.png)
+
+## Ventral head curve
+
+![VH: Curve of the body running from the tip of the lower jaw (J3) to the base of the pelvic fin.](img/VH.png)
+
+## Anal fin base curve
+
+![AF: Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions.](img/AF.png)
+
+## Measurements
+
+![SL: Line from tip of upper jaw (J1) to midpoint of the base of the tail (between C1 and C2).](img/SL.png)
+
+![DP: The longest straight line that can be drawn through the fish from top to the bottom.](img/DP.png)
