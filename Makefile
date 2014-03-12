@@ -14,7 +14,8 @@ build: help
 	@cp protocol/protocol.html protocol/fish_example.jpg build/protocol
 
 deploy: all
-	@cd ./build && git init . && git add . && git commit -m 'Deploy' && git push 'git@github.com:jonchang/eol-mturk-landmark.git' master:gh-pages --force && rm -rf .git
+	#@cd ./build && git init . && git add . && git commit -m 'Deploy' && git push 'git@github.com:jonchang/eol-mturk-landmark.git' master:gh-pages --force && rm -rf .git
+	@cp -R build ~/Dropbox/Public
 
 clean: clean_help
 	@rm -rf build

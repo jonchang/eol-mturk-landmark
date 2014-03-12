@@ -3,9 +3,11 @@
 
 function init_canvas(img, callback) {
     "use strict";
-    $("#canvasbg").attr("src", img);
-    // wait for the image to load
+    console.log(img);
+    console.log($("#canvasbg"));
+    $("#canvasbg")[0].addEventListener("load", console.log, false);
     $("#canvasbg").on("load", function (e) {
+        console.log(e);
         var img = $(e.target);
         var canvasbox = $("#canvasbox");
         var appcanvas = $("<canvas/>").attr({
@@ -17,6 +19,7 @@ function init_canvas(img, callback) {
         $(".container").css("min-width", img.css("width"));
         if (typeof callback === "function") { callback(); }
     });
+    $("#canvasbg").attr("src", img);
 }
 
 var Toolbox = (function () {
@@ -118,7 +121,7 @@ var Drawing = (function () {
 
     function draw_line(args) {
         var ctx = args.ctx;
-        if (args.evt === "mousedown") {
+        if (args.evt === "mousedown" || args.evt === "touchstart") {
             ctx.startx = args.x;
             ctx.starty = args.y;
         }
@@ -141,16 +144,16 @@ var Drawing = (function () {
         function dist(p1, p2) {
             return Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
         }
-        if (args.evt === "mousedown") {
+        if (args.evt === "mousedown" || args.evt === "touchstart") {
             ctx.startx = args.x;
             ctx.starty = args.y;
             ctx.endx = undefined;
             ctx.endy = undefined;
             ctx.pts = [];
-        } else if (args.evt === "mousemove") {
+        } else if (args.evt === "mousemove" || args.evt === "touchmove") {
             ctx.pts.push([args.x, args.y]);
             ctx.lineTo(args.x, args.y);
-        } else if (args.evt === "mouseup") {
+        } else if (args.evt === "mouseup" || args.evt === "touchend") {
             ctx.endx = args.x;
             ctx.endy = args.y;
         }
@@ -204,7 +207,8 @@ var Drawing = (function () {
     function wrapper(fn) {
         return function (args) {
             if (!args.keep) args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
-            if (args.callback) args.callback(args.tool, fn(args));
+            var cb = args.callback || function () {};
+            if (cb) cb(args.tool, fn(args));
         };
     }
 
@@ -259,18 +263,39 @@ function evt_review (evt) {
     "use strict";
     var parsed = JSON.parse($("#review")[0].value);
     for (var ii in parsed) {
-        if (parsed.hasOwnProperty(ii))
-            draw_landmark(parsed[ii][0], parsed[ii][1], ii);
+        if (parsed.hasOwnProperty(ii)) {
+            var args = {tool: ii, evt: "mousedown", ctx: Toolbox.get_canvas(ii).getContext("2d"), keep: 1};
+            if (Toolbox.type(ii) == "curve") {
+                var pts = parsed[ii].points;
+                for (var jj = 0; jj < pts.length; jj++) {
+                    args.x = pts[jj][0];
+                    args.y = pts[jj][1];
+                    Drawing.point(args);
+                }
+            } else {
+                args.x = parsed[ii][0];
+                args.y = parsed[ii][1];
+                Drawing.point(args);
+            }
+        }
     }
 }
 
 function review_on(txt) {
     "use strict";
-    var rev = $("#review");
-    rev.css("display", "block");
-    rev.on("change", evt_review);
-    rev[0].value = txt;
-    evt_review();
+    if (get_param("review") !== "") {
+        $("#toolbox").css("display", "none");
+        $("#mturk_form").css("display", "none");
+        var formbox = $("#submitbox");
+        formbox.append($('<p>Comment: ' + get_param("comment", "") + '</p><form method="POST" action="/review"><input type="hidden" name="assignmentid" value="' + get_param("assignmentId") + '"><input id="review_feedback" class="form-control" name="feedback" type="text"><input class="btn btn-large btn-default" type="submit" name="action" value="approve"><input class="btn btn-large btn-error" type="submit" name="action" value="reject"></form>'));
+        $("#review_feedback").focus();
+        update_submit = function () {return 1};
+        var rev = $("#review");
+        rev.css("display", "block");
+        rev.on("change", evt_review);
+        rev[0].value = get_param("review");
+        evt_review();
+    }
 }
 
 function update_submit () {
@@ -294,8 +319,8 @@ function update_submit () {
 function evt_mouse(e) {
     "use strict";
     var cbox = $("#canvasbox");
-    if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
-    if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
+    if (e.type == "mousedown" || e.type == "touchstart") cbox.on("mousemove touchmove", evt_mouse);
+    if (e.type == "mouseup" || e.type == "touchend") cbox.off("mousemove touchmove", evt_mouse);
     var tool = Toolbox.active();
     var appbox = $("#appbox")[0];
     var args = {x: e.pageX - appbox.offsetLeft,
@@ -305,7 +330,6 @@ function evt_mouse(e) {
                 ctx: Toolbox.get_canvas(tool).getContext("2d"),
                 callback: update_data
                };
-    Drawing[Toolbox.type(tool)](args);
 }
 
 function get_param (param, default_value) {
@@ -318,14 +342,17 @@ function initialize() {
     "use strict";
     var cbox = $("#canvasbox");
 
-    cbox.on("mousedown mouseup", evt_mouse);
+    cbox.on("mousedown mouseup touchstart touchend", evt_mouse);
     $(document).keypress(evt_keydown);
     var form = $("#mturk_form");
     form.submit(evt_submit);
 
     init_canvas(get_param("url", "protocol/fish_example.jpg"),
-                function () { $.getJSON("js/tool_defs.json").done(Toolbox.init); }
-                );
+                function () { $.getJSON("js/tool_defs.json").done(
+                    function (defs) {
+                        Toolbox.init(defs, review_on);
+                            })
+                });
 
     $("#assignmentId")[0].value = get_param("assignmentId");
     if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
@@ -337,11 +364,7 @@ function initialize() {
         update_submit = function() {};
     } else {
         $(".alert").hide();
-        form.action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
+        form.attr("action", get_param("turkSubmitTo") + "/mturk/externalSubmit");
         update_submit();
-    }
-
-    if (get_param("review") !== "") {
-        review_on(get_param("review"));
     }
 }
