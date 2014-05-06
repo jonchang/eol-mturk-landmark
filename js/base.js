@@ -1,21 +1,14 @@
 /*jshint browser: true, strict: true*/
 /*global $, jQuery*/
 
-function init_canvas(img, callback) {
+function init_canvas(img) {
     "use strict";
     $("#canvasbg").attr("src", img);
     // wait for the image to load
     $("#canvasbg").on("load", function (e) {
         var img = $(e.target);
         var canvasbox = $("#canvasbox");
-        var appcanvas = $("<canvas/>").attr({
-            id: "appcanvas",
-            width: img.width(),
-            height: img.height()
-        });
-        canvasbox.append(appcanvas);
         $(".container").css("min-width", img.css("width"));
-        if (typeof callback === "function") { callback(); }
     });
 }
 
@@ -25,7 +18,7 @@ var Toolbox = (function () {
     var toolbox;
     var tools = {};
 
-    function init(defs, callback) {
+    function init(defs) {
         // set instance variables
         tool_defs = defs;
         toolbox = $("#toolbox");
@@ -42,11 +35,16 @@ var Toolbox = (function () {
                 toolbox.append(lab.append(newtool));
 
                 // make canvases
-                var canvas = $("#appcanvas");
-                var clone = canvas.clone(false).attr("id", key + "_canvas");
-                $("#canvasbox").append(clone);
-                clone[0].getContext("2d").globalAlpha = 0.85;
-                tools[key] = clone[0];
+                var img = $("#canvasbg");
+                var canvas = $("<canvas/>");
+                canvas.attr({
+                    id: key + "_canvas",
+                    width: img.width(),
+                    height: img.height()
+                });
+                $("#canvasbox").append(canvas);
+                canvas[0].getContext("2d").globalAlpha = 0.85;
+                tools[key] = canvas[0];
             }
         }
 
@@ -59,8 +57,20 @@ var Toolbox = (function () {
 
         radios[0].click();
         radios[0].checked = true; // Shouldn't clicking a radio button also check it? :psyduck:
+    }
 
-        if (typeof callback == "function") callback();
+    function info(tool_name) {
+        if (!tool_name) {
+            tool_name = active();
+        }
+        return {
+            canvas: tools[tool_name],
+            ctx: tools[tool_name].getContext("2d"),
+            label: tool_name,
+            kind: tool_defs[tool_name].kind,
+            help: tool_defs[tool_name].help,
+            anchor: tool_defs[tool_name].anchor
+        }
     }
 
     function get_canvas(tool_name) {
@@ -86,135 +96,41 @@ var Toolbox = (function () {
     return {
         init: init,
         tools: tools,
-        get_canvas: get_canvas,
         active: active,
-        type: type,
-        help: help,
-        anchor: anchor
+        info: info
     };
 })();
 
+function clear_canvas(ctx) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+}
 
-var Drawing = (function () {
-    "use strict";
-    function draw_point(args) {
-        var ctx = args.ctx;
-        var radius = 6;
-        ctx.beginPath();
-        ctx.arc(args.x, args.y, radius, 0, 2 * Math.PI);
-        ctx.fillStyle = "white";
-        ctx.fill();
+function draw_point(ctx, xoff, yoff, label) {
+    var radius = 6;
+    var pin_height = 12
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "white"
+    ctx.beginPath()
+    ctx.moveTo(xoff, yoff);
+    ctx.lineTo(xoff, yoff - pin_height)
+    ctx.stroke();
+    ctx.closePath();
 
-        ctx.strokeStyle = "#666";
-        ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(xoff, yoff - pin_height - radius, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.closePath();
 
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.font = "5pt sans-serif";
-        ctx.fillText(args.tool, args.x, args.y);
-        return [args.x, args.y];
-    }
-
-    function draw_line(args) {
-        var ctx = args.ctx;
-        if (args.evt === "mousedown") {
-            ctx.startx = args.x;
-            ctx.starty = args.y;
-        }
-        ctx.beginPath();
-        ctx.moveTo(ctx.startx, ctx.starty);
-        ctx.lineTo(args.x, args.y);
-        ctx.closePath();
-        ctx.strokeStyle = "red";
-        ctx.stroke();
-        draw_point({x: ctx.startx, y: ctx.starty, tool: args.tool, ctx: ctx});
-        draw_point({x: args.x, y: args.y, tool: args.tool, ctx: ctx});
-        return [[ctx.startx, ctx.starty], [args.x, args.y]];
-    }
-
-    function draw_curve(args) {
-        var ctx = args.ctx;
-        function rect_at(pp) {
-            ctx.fillRect(pp[0] - 1, pp[1] - 1, 3, 3);
-        }
-        function dist(p1, p2) {
-            return Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
-        }
-        if (args.evt === "mousedown") {
-            ctx.startx = args.x;
-            ctx.starty = args.y;
-            ctx.endx = undefined;
-            ctx.endy = undefined;
-            ctx.pts = [];
-        } else if (args.evt === "mousemove") {
-            ctx.pts.push([args.x, args.y]);
-            ctx.lineTo(args.x, args.y);
-        } else if (args.evt === "mouseup") {
-            ctx.endx = args.x;
-            ctx.endy = args.y;
-        }
-        ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.moveTo(ctx.startx, ctx.starty);
-        for (var ii = 0; ii < ctx.pts.length; ii++) {
-            ctx.lineTo(ctx.pts[ii][0], ctx.pts[ii][1]);
-        }
-        ctx.stroke();
-        draw_point({x: ctx.startx, y: ctx.starty, tool: args.tool, ctx: ctx});
-        if (ctx.endx && ctx.endy) {
-            // Find the arclength of the canvas curve, approximated by line segments
-            var total_dist = 0;
-            for (var jj = 0; jj < ctx.pts.length - 1; jj++) {
-                total_dist += dist(ctx.pts[jj], ctx.pts[jj+1]);
-            }
-
-            // We want 5 semilandmarks, so that splits the arc into 4 subsegments
-            var step = total_dist / 4;
-
-            var running_dist = 0;
-            var running_step = step;
-            var semilandmarks = [];
-            for (var kk = 0; kk < ctx.pts.length - 1; kk++) {
-                var current_dist = dist(ctx.pts[kk], ctx.pts[kk+1]);
-                running_dist += current_dist;
-                while (running_dist > running_step) {
-                    /*  frac                              ------
-                     *  running_dist    |----------------|------*--------|
-                     *  running_step     -----------------------
-                     *  current_dist                      ---------------
-                     */
-                    var frac = (running_step + current_dist - running_dist) / current_dist;
-                    var newx = Math.round((1 - frac) * ctx.pts[kk][0] + frac * ctx.pts[kk+1][0]);
-                    var newy = Math.round((1 - frac) * ctx.pts[kk][1] + frac * ctx.pts[kk+1][1]);
-                    semilandmarks.push([newx, newy]);
-                    ctx.fillStyle = "cyan";
-                    rect_at([newx, newy]);
-                    running_step += step;
-                }
-            }
-            // add in the start and end points
-            semilandmarks.unshift([ctx.startx, ctx.starty]);
-            semilandmarks.push([ctx.endx, ctx.endy]);
-            draw_point({x: ctx.endx, y: ctx.endy, tool: args.tool, ctx: ctx});
-            return {points: semilandmarks, curve: ctx.pts};
-        }
-    }
-
-    function wrapper(fn) {
-        return function (args) {
-            if (!args.keep) args.ctx.clearRect(0, 0, args.ctx.canvas.width, args.ctx.canvas.height);
-            if (args.callback) args.callback(args.tool, fn(args));
-        };
-    }
-
-
-    return {
-        point: wrapper(draw_point),
-        line: wrapper(draw_line),
-        curve: wrapper(draw_curve)
-    };
-}());
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = "5pt sans-serif";
+    ctx.fillText(label, xoff, yoff - pin_height - radius);
+    return;
+}
 
 var landmark_data = {};
 
@@ -226,11 +142,9 @@ function update_data(name, value) {
 }
 
 function update_help() {
-    var tool = Toolbox.active();
-    var anchor = Toolbox.anchor(tool);
-    var help = Toolbox.help(tool);
+    var tool = Toolbox.info();
     $("#infobox-content").html(
-        '<b>' + tool + '</b>: ' + help + ' <a href="protocol/protocol.html#' + anchor + '" target="_blank">More info</a>'
+        '<b>' + tool.label + '</b>: ' + tool.help + ' <a href="protocol/protocol.html#' + tool.anchor + '" target="_blank">More info</a>'
     );
 }
 
@@ -293,19 +207,13 @@ function update_submit () {
 
 function evt_mouse(e) {
     "use strict";
-    var cbox = $("#canvasbox");
-    if (e.type == "mousedown") cbox.on("mousemove", evt_mouse);
-    if (e.type == "mouseup") cbox.off("mousemove", evt_mouse);
-    var tool = Toolbox.active();
+    var tool = Toolbox.info();
     var appbox = $("#appbox")[0];
-    var args = {x: e.pageX - appbox.offsetLeft,
-                y: e.pageY - appbox.offsetTop,
-                evt: e.type,
-                tool: tool,
-                ctx: Toolbox.get_canvas(tool).getContext("2d"),
-                callback: update_data
-               };
-    Drawing[Toolbox.type(tool)](args);
+    var x = e.pageX - appbox.offsetLeft;
+    var y = e.pageY - appbox.offsetTop;
+    clear_canvas(tool.ctx);
+    draw_point(tool.ctx, x, y, tool.label);
+    update_data(tool.label, x, y);
 }
 
 function get_param (param, default_value) {
@@ -318,14 +226,24 @@ function initialize() {
     "use strict";
     var cbox = $("#canvasbox");
 
-    cbox.on("mousedown mouseup", evt_mouse);
+    cbox.on("mousedown", evt_mouse);
     $(document).keypress(evt_keydown);
     var form = $("#mturk_form");
     form.submit(evt_submit);
 
-    init_canvas(get_param("url", "protocol/fish_example.jpg"),
-                function () { $.getJSON("js/tool_defs.json").done(Toolbox.init); }
-                );
+    var load_image = $.Deferred(function (dfd) {
+        $("#canvasbg").one("load", dfd.resolve);
+        $("#canvasbg").attr("src", get_param("url", "protocol/fish_example.jpg"));
+    }).promise();
+
+    var load_toolbox = $.getJSON("js/tool_defs.json");
+
+    $.when(load_image, load_toolbox).then(function () {
+        var img = $("#canvasbg");
+        $(".container").css("min-width", img.css("width"));
+        load_toolbox.done(Toolbox.init);
+    });
+
 
     $("#assignmentId")[0].value = get_param("assignmentId");
     if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
