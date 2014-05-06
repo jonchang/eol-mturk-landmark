@@ -29,3 +29,8 @@ canvas {
 #review {
     display: none;
 }
+
+.btn {
+    padding: 6px 5px;
+    font-size: 13px;
+}
