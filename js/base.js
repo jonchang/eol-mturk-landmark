@@ -43,7 +43,6 @@ var Toolbox = (function () {
                     height: img.height()
                 });
                 $("#canvasbox").append(canvas);
-                canvas[0].getContext("2d").globalAlpha = 0.85;
                 tools[key] = canvas[0];
             }
         }
@@ -108,7 +107,7 @@ function clear_canvas(ctx) {
 function draw_point(ctx, xoff, yoff, label) {
     var radius = 6;
     var pin_height = 12
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = "cyan";
     ctx.lineWidth = 2;
     ctx.fillStyle = "white"
     ctx.beginPath()
@@ -129,7 +128,77 @@ function draw_point(ctx, xoff, yoff, label) {
     ctx.textBaseline = "middle";
     ctx.font = "5pt sans-serif";
     ctx.fillText(label, xoff, yoff - pin_height - radius);
-    return;
+    return [xoff, yoff];
+}
+
+function draw_start_curve(ctx, xoff, yoff, label) {
+    draw_point(ctx, xoff, yoff, label);
+    ctx.ctr = 0;
+    ctx.allx = [xoff];
+    ctx.ally = [yoff];
+    ctx.beginPath();
+}
+
+function draw_continue_curve(ctx, xoff, yoff, label) {
+    ctx.strokeStyle = "#d00";
+    ctx.lineWidth = 1;
+    ctx.ctr += 1;
+    ctx.allx.push(xoff);
+    ctx.ally.push(yoff);
+    ctx.lineTo(xoff, yoff);
+    ctx.stroke();
+}
+
+function draw_end_curve(ctx, xoff, yoff, label) {
+    ctx.ctr += 1;
+    ctx.allx.push(xoff);
+    ctx.ally.push(xoff);
+    // Redraw the whole thing on mouseup, to avoid overlap
+    clear_canvas(ctx);
+    ctx.strokeStyle = "#d00";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(ctx.allx[0], ctx.ally[0]);
+    for (var ii = 0; ii < ctx.ctr; ii++) {
+        ctx.lineTo(ctx.allx[ii], ctx.ally[ii]);
+    }
+    ctx.stroke();
+    ctx.closePath();
+    draw_point(ctx, ctx.allx[0], ctx.ally[0], label);
+    draw_point(ctx, xoff, yoff, label);
+    return [ctx.allx, ctx.ally];
+}
+
+function draw_start_line(ctx, xoff, yoff, label) {
+    draw_point(ctx, xoff, yoff, label);
+    ctx.startx = xoff;
+    ctx.starty = yoff;
+}
+
+function draw_continue_line(ctx, xoff, yoff, label) {
+    clear_canvas(ctx);
+    ctx.strokeStyle = "#d00";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(ctx.startx, ctx.starty);
+    ctx.lineTo(xoff, yoff);
+    ctx.stroke();
+    ctx.closePath();
+    draw_point(ctx, ctx.startx, ctx.starty, label);
+}
+
+function draw_end_line(ctx, xoff, yoff, label) {
+    clear_canvas(ctx);
+    ctx.strokeStyle = "#d00";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(ctx.startx, ctx.starty);
+    ctx.lineTo(xoff, yoff);
+    ctx.stroke();
+    ctx.closePath();
+    draw_point(ctx, ctx.startx, ctx.starty, label);
+    draw_point(ctx, xoff, yoff, label);
+    return [[ctx.startx, xoff], [ctx.starty, yoff]];
 }
 
 var landmark_data = {};
@@ -205,15 +274,69 @@ function update_submit () {
     }
 }
 
-function evt_mouse(e) {
+function evt_mousedown(e) {
     "use strict";
     var tool = Toolbox.info();
-    var appbox = $("#appbox")[0];
-    var x = e.pageX - appbox.offsetLeft;
-    var y = e.pageY - appbox.offsetTop;
+    var appbox = $("#appbox");
+    var x = e.pageX - appbox[0].offsetLeft;
+    var y = e.pageY - appbox[0].offsetTop;
     clear_canvas(tool.ctx);
-    draw_point(tool.ctx, x, y, tool.label);
-    update_data(tool.label, x, y);
+    var ret;
+    switch (tool.kind) {
+        case "point":
+            ret = draw_point(tool.ctx, x, y, tool.label);
+            break;
+        case "line":
+            // Could avoid code duplication by making a ClickDragTool prototype with
+            // Line and Curve as implementations but way too heavyweight for 2 cases
+            appbox.on("mousemove", evt_mousemove);
+            appbox.on("mouseup", evt_mouseup);
+            draw_start_line(tool.ctx, x, y, tool.label);
+            break;
+        case "curve":
+            appbox.on("mousemove", evt_mousemove);
+            appbox.on("mouseup", evt_mouseup);
+            draw_start_curve(tool.ctx, x, y, tool.label);
+            break;
+        default:
+            console.log("Warning: Undefined tool type", tool.kind, "used.");
+    }
+    if (ret) {
+        update_data(tool.label, ret);
+    }
+}
+
+function evt_mousemove(e) {
+    "use strict";
+    var tool = Toolbox.info();
+    var appbox = $("#appbox");
+    var x = e.pageX - appbox[0].offsetLeft;
+    var y = e.pageY - appbox[0].offsetTop;
+
+    if (tool.kind === "line") {
+        draw_continue_line(tool.ctx, x, y, tool.label);
+    } else {
+        draw_continue_curve(tool.ctx, x, y, tool.label);
+    }
+}
+
+function evt_mouseup(e) {
+    "use strict";
+    var tool = Toolbox.info();
+    var appbox = $("#appbox");
+    var x = e.pageX - appbox[0].offsetLeft;
+    var y = e.pageY - appbox[0].offsetTop;
+    var ret;
+    if (tool.kind === "line") {
+        ret = draw_end_line(tool.ctx, x, y, tool.label);
+    } else {
+        ret = draw_end_curve(tool.ctx, x, y, tool.label);
+    }
+    if (ret) {
+        update_data(tool.label, ret);
+    }
+    appbox.off("mousemove", evt_mousemove);
+    appbox.off("mouseup", evt_mouseup);
 }
 
 function get_param (param, default_value) {
@@ -226,7 +349,7 @@ function initialize() {
     "use strict";
     var cbox = $("#canvasbox");
 
-    cbox.on("mousedown", evt_mouse);
+    cbox.on("mousedown", evt_mousedown);
     $(document).keypress(evt_keydown);
     var form = $("#mturk_form");
     form.submit(evt_submit);
