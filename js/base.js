@@ -354,6 +354,20 @@ function get_param (param, default_value) {
     return res && decodeURIComponent(res[1]) || default_value || "";
 }
 
+function load_resources(image, toolbox) {
+    "use strict";
+    var wait_img = $.Deferred(function (dfd) {
+        $("#canvasbg").one("load", dfd.resolve);
+        $("#canvasbg").attr("src", image);
+    }).promise();
+    var wait_tool = $.getJSON(toolbox);
+    $.when(wait_img, wait_tool).then(function () {
+        var img = $("#canvasbg");
+        $(".container").css("min-width", img.css("width"));
+        wait_tool.done(Toolbox.init);
+    });
+}
+
 function initialize() {
     "use strict";
     var cbox = $("#canvasbox");
@@ -363,19 +377,7 @@ function initialize() {
     var form = $("#mturk_form");
     form.submit(evt_submit);
 
-    var load_image = $.Deferred(function (dfd) {
-        $("#canvasbg").one("load", dfd.resolve);
-        $("#canvasbg").attr("src", get_param("url", "protocol/fish_example.jpg"));
-    }).promise();
-
-    var load_toolbox = $.getJSON("js/tool_defs.json");
-
-    $.when(load_image, load_toolbox).then(function () {
-        var img = $("#canvasbg");
-        $(".container").css("min-width", img.css("width"));
-        load_toolbox.done(Toolbox.init);
-    });
-
+    load_resources(get_param("url", "protocol/fish_example.jpg"), "js/tool_defs.json");
 
     $("#assignmentId")[0].value = get_param("assignmentId");
     if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
