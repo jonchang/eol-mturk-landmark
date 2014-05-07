@@ -147,6 +147,6 @@
     "V1": {
         "kind": "line",
         "anchor": "measurements",
-        "help": "The longest straight line that can be drawn through the fish from top to the bottom."
+        "help": "The longest straight line that can be drawn through the fish from top to the bottom, excluding fins."
     }
 }
