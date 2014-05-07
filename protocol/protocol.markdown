@@ -32,26 +32,20 @@ Fin rays are the soft spines that make up a fish's fins. They are clearly visibl
 
 ## Mouth
 
-![](img/J1.png)
+![](img/JJ.png)
 
 J1: The tip of the upper jaw.
 
-![](img/J2.png)
-
 J2: The intersection of the upper and lower jaw. This is not simply where the flesh of the upper and lower jaw meet!
 ![](img/J2_wrong.png)
-
-![](img/J3.png)
 
 J3: The tip of the lower jaw.
 
 ## Eye
 
-![](img/E1.png)
+![](img/EE.png)
 
 E1: The most anterior (forward) margin of the eye at its widest diameter.
-
-![](img/E2.png)
 
 E2: The most posterior (rearward) margin of the eye at its widest diameter.
 
@@ -59,89 +53,83 @@ E2: The most posterior (rearward) margin of the eye at its widest diameter.
 
 ![](img/fish_operculum.png)
 
-The preoperculum points (O1-O3) might not be visible in certain fishes. If you really can't find them place their points at the top-left corner of the image and make a comment in the comment box saying so.
+![](img/OO.png)
 
-![](img/O1.png)
+The preoperculum points (O1-O3) might not be visible in certain fishes. Make your **best effort** to locate and mark these points. If you really can't find them place their points at the top-left corner of the image and make a comment in the comment box saying so.
 
 O1: The top point of the preopercule.
 
-![](img/O2.png)
-
 O2: The posterior (rearward) \"elbow\" of the preopercule.
-
-![](img/O3.png)
 
 O3: The bottom point of the preopercule.
 
-![](img/O4.png)
-
 O4: The top point of the operculum (gill cover).
-
-![](img/O5.png)
 
 O5: The posterior (rearward) point of the operculum (gill cover).
 
 ## Pectoral fin
 
-![](img/P1.png)
+![](img/PP.png)
 
 P1: Top intersection of pectoral fin rays with the base of the pectoral fin.
 
-![](img/P2.png)
+P2: The distal tip (farthest from body) of the pectoral fin's top fin ray.
 
-P2: Bottom intersection of pectoral fin rays with the base of the pectoral fin.
+P3: Bottom intersection of pectoral fin rays with the base of the pectoral fin.
 
-## Caudal fin
-
-![](img/C1.png)
-
-C1: Top intersection of the tail fin rays with the body.
-
-![](img/C2.png)
-
-C2: Bottom intersection of the tail fin rays with the body.
-
-
-## Dorsal head curve
-
-![](img/DH.png)
-
-DH: Curve of the body running from the [tip of the upper jaw (J1)](#mouth) to the [base of the dorsal fin (DF)](#dorsal-fin).
+P4: The distal tip (farthest from body) of the pectoral fin's bottom fin ray.
 
 ## Dorsal fin
 
-![](img/DF.png)
+![](img/DD.png)
 
-DF: Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions.
+D1: Anterior (forward) intersection of the dorsal fin rays with the body.
 
-![](img/DM.png)
+D2: The distal tip (farthest from body) of the dorsal fin's anterior fin ray.
 
-DM: Curve of the distal margin of the dorsal fin, from the tip of the first (anterior) fin ray to the last fin ray.
+D3: Posterior (rearward) intersection of the dorsal fin rays with the body.
 
+D4: The distal tip (farthest from body) of the dorsal fin's posterior fin ray.
 
-## Ventral head curve
+## Caudal fin
 
-![](img/VH.png)
+![](img/CC.png)
 
-VH: Curve of the body running from the [tip of the lower jaw (J3)](#mouth) to the base of the [pelvic fin](#fish-anatomy).
+C1: Top intersection of the tail fin rays with the body.
+
+C2: The distal tip (farthest from body) of the caudal fin's top fin ray.
+
+C3: Bottom intersection of the tail fin rays with the body.
+
+C4: The distal tip (farthest from body) of the caudal fin's bottom fin ray.
+
+C5: The midpoint somewhere between C1 and C4 of the caudal fin's insertion on the body.
 
 ## Anal fin
 
-![](img/AF.png)
+![](img/AA.png)
 
-AF: Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions.
+A1: Anterior (forward) intersection of the anal fin rays with the body.
 
-![](img/AM.png)
+A2: The distal tip (farthest from body) of the anal fin's anterior fin ray.
 
-AM: Curve of the distal margin of the anal fin, from the tip of the first (anterior) fin ray to the last fin ray.
+A3: Posterior (rearward) intersection of the anal fin rays with the body.
 
+A4: The distal tip (farthest from body) of the anal fin's posterior fin ray.
+
+
+## Body curves
+
+![](img/S1.png)
+
+S1: The top curve of the body, from the [tip of the upper jaw (J1)](#mouth) to the [distal tip of the caudal fin (C2)](#caudal-fin), excluding the [dorsal fins](#fish-anatomy).
+
+![](img/S2.png)
+
+S2: The bottom curve of the body, from the [tip of the lower jaw (J3)](#mouth) to the [distal tip of the caudal fin (C3)](#caudal-fin), excluding the [ventral and anal fins](#fish-anatomy).
 
 ## Measurements
 
-![](img/SL.png)
+![](img/V1.png)
 
-SL: Line from [tip of the upper jaw (J1)](#mouth) to midpoint of the [base of the tail (between C1 and C2)](#caudal-fin).
-
-![](img/DP.png)
-
-DP: The longest straight line that can be drawn through the fish from top to the bottom.
+V1: The longest straight line that can be drawn through the body of the fish from top to bottom, excluding the fins.
