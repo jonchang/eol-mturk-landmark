@@ -52,7 +52,7 @@ var Toolbox = (function () {
                 update_submit();
                 update_help();
             }
-        )
+        );
 
         radios[0].click();
         radios[0].checked = true; // Shouldn't clicking a radio button also check it? :psyduck:
@@ -69,7 +69,7 @@ var Toolbox = (function () {
             kind: tool_defs[tool_name].kind,
             help: tool_defs[tool_name].help,
             anchor: tool_defs[tool_name].anchor
-        }
+        };
     }
 
     function get_canvas(tool_name) {
@@ -101,18 +101,20 @@ var Toolbox = (function () {
 })();
 
 function clear_canvas(ctx) {
+    "use strict";
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
 function draw_point(ctx, xoff, yoff, label) {
+    "use strict";
     var radius = 6;
-    var pin_height = 12
+    var pin_height = 12;
     ctx.strokeStyle = "cyan";
     ctx.lineWidth = 2;
-    ctx.fillStyle = "white"
-    ctx.beginPath()
+    ctx.fillStyle = "white";
+    ctx.beginPath();
     ctx.moveTo(xoff, yoff);
-    ctx.lineTo(xoff, yoff - pin_height)
+    ctx.lineTo(xoff, yoff - pin_height);
     ctx.stroke();
     ctx.closePath();
 
@@ -132,6 +134,7 @@ function draw_point(ctx, xoff, yoff, label) {
 }
 
 function draw_start_curve(ctx, xoff, yoff, label) {
+    "use strict";
     draw_point(ctx, xoff, yoff, label);
     ctx.ctr = 0;
     ctx.allx = [xoff];
@@ -140,6 +143,7 @@ function draw_start_curve(ctx, xoff, yoff, label) {
 }
 
 function draw_continue_curve(ctx, xoff, yoff, label) {
+    "use strict";
     ctx.strokeStyle = "#d00";
     ctx.lineWidth = 1;
     ctx.ctr += 1;
@@ -150,6 +154,7 @@ function draw_continue_curve(ctx, xoff, yoff, label) {
 }
 
 function draw_end_curve(ctx, xoff, yoff, label) {
+    "use strict";
     ctx.ctr += 1;
     ctx.allx.push(xoff);
     ctx.ally.push(xoff);
@@ -170,12 +175,14 @@ function draw_end_curve(ctx, xoff, yoff, label) {
 }
 
 function draw_start_line(ctx, xoff, yoff, label) {
+    "use strict";
     draw_point(ctx, xoff, yoff, label);
     ctx.startx = xoff;
     ctx.starty = yoff;
 }
 
 function draw_continue_line(ctx, xoff, yoff, label) {
+    "use strict";
     clear_canvas(ctx);
     ctx.strokeStyle = "#d00";
     ctx.lineWidth = 2;
@@ -188,6 +195,7 @@ function draw_continue_line(ctx, xoff, yoff, label) {
 }
 
 function draw_end_line(ctx, xoff, yoff, label) {
+    "use strict";
     clear_canvas(ctx);
     ctx.strokeStyle = "#d00";
     ctx.lineWidth = 2;
@@ -211,6 +219,7 @@ function update_data(name, value) {
 }
 
 function update_help() {
+    "use strict";
     var tool = Toolbox.info();
     $("#infobox-content").html(
         '<b>' + tool.label + '</b>: ' + tool.help + ' <a href="protocol/protocol.html#' + tool.anchor + '" target="_blank">More info</a>'
