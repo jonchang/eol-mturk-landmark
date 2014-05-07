@@ -52,59 +52,99 @@
     "P1": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "Top intersection of pectoral fin rays with the base of the pectoral fin."
+        "help": "The base of the pectoral fin's top fin ray."
     },
     "P2": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "Bottom intersection of pectoral fin rays with the base of the pectoral fin."
+        "help": "The distal tip of the pectoral fin's top fin ray."
+    },
+    "P3": {
+        "kind": "point",
+        "anchor": "pectoral-fin",
+        "help": "The distal tip of the pectoral fin's bottom fin ray."
+    },
+    "P4": {
+        "kind": "point",
+        "anchor": "pectoral-fin",
+        "help": "The base of the pectoral fin's bottom fin ray."
+    },
+    "D1": {
+        "kind": "point",
+        "anchor": "dorsal-fin",
+        "help": "The base of the dorsal fin's anterior (forward) fin ray."
+    },
+    "D2": {
+        "kind": "point",
+        "anchor": "dorsal-fin",
+        "help": "The distal tip of the dorsal fin's anterior (forward) fin ray."
+    },
+    "D3": {
+        "kind": "point",
+        "anchor": "dorsal-fin",
+        "help": "The distal tip of the dorsal fin's posterior (rearward) fin ray."
+    },
+    "D4": {
+        "kind": "point",
+        "anchor": "dorsal-fin",
+        "help": "The base of the dorsal fin's posterior (rearward) fin ray."
     },
     "C1": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Top intersection of the tail fin rays with the body."
+        "help": "The base of the caudal fin's top fin ray."
     },
     "C2": {
         "kind": "point",
         "anchor": "caudal-fin",
+        "help": "The distal tip of the caudal fin's top fin ray."
+    },
+    "C3": {
+        "kind": "point",
+        "anchor": "caudal-fin",
+        "help": "The distal tip of the caudal fin's bottom fin ray."
+    },
+    "C4": {
+        "kind": "point",
+        "anchor": "caudal-fin",
         "help": "Bottom intersection of the tail fin rays with the body."
     },
-    "DH": {
-        "kind": "curve",
-        "anchor": "dorsal-head-curve",
-        "help": "Curve of the body running from the tip of the upper jaw (J1) to the base of the dorsal fin (DF)."
+    "C5": {
+        "kind": "point",
+        "anchor": "caudal-fin",
+        "help": "The midpoint of the base of the tail (between C1 and C3)."
     },
-    "DF": {
-        "kind": "curve",
-        "anchor": "dorsal-fin",
-        "help": "Curve of the base of the dorsal fin, from the anterior to posterior fin ray insertions."
-    },
-    "DM": {
-        "kind": "curve",
-        "anchor": "dorsal-fin",
-        "help": "Curve of the distal margin of the dorsal fin, from the tip of the first (anterior) fin ray to the last fin ray."
-    },
-    "VH": {
-        "kind": "curve",
-        "anchor": "ventral-head-curve",
-        "help": "Curve of the body running from the tip of the lower jaw (J3) to the base of the pelvic fin."
-    },
-    "AF": {
-        "kind": "curve",
+    "A1": {
+        "kind": "point",
         "anchor": "anal-fin",
-        "help": "Curve of of the base of the anal fin, from the anterior to posterior fin ray insertions."
+        "help": "The base of the anal fin's anterior (forward) fin ray."
     },
-    "AM": {
-        "kind": "curve",
+    "A2": {
+        "kind": "point",
         "anchor": "anal-fin",
-        "help": "Curve of the distal margin of the anal fin, from the tip of the first (anterior) fin ray to the last fin ray."
+        "help": "The distal tip of the anal fin's anterior (forward) fin ray."
     },
-    "SL": {
-        "kind": "line",
-        "anchor": "measurements",
-        "help": "Line from tip of upper jaw (J1) to midpoint of the base of the tail (between C1 and C2)."
+    "A3": {
+        "kind": "point",
+        "anchor": "anal-fin",
+        "help": "The distal tip of the anal fin's posterior (rearward) fin ray."
     },
-    "DP": {
+    "A4": {
+        "kind": "point",
+        "anchor": "anal-fin",
+        "help": "The base of the anal fin's posterior (rearward) fin ray."
+    },
+    "S1": {
+        "kind": "curve",
+        "anchor": "body-curves",
+        "help": "The top curve of the body, from J1 to C2, excluding the dorsal fins."
+    },
+    "S2": {
+        "kind": "curve",
+        "anchor": "body-curves",
+        "help": "The bottom curve of the body, from J3 to C3, excluding the ventral and anal fins."
+    },
+    "V1": {
         "kind": "line",
         "anchor": "measurements",
         "help": "The longest straight line that can be drawn through the fish from top to the bottom."
