@@ -389,7 +389,7 @@ function initialize() {
         update_submit = function() {};
     } else {
         $(".alert").hide();
-        form.action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
+        form[0].action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
         update_submit();
     }
 
