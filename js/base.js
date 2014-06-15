@@ -48,11 +48,11 @@ var Toolbox = (function () {
         }
 
         var radios = $("input[type=radio]");
-        radios.change(function () {
-                update_submit();
-                update_help();
-            }
-        );
+        radios.change(function (e) {
+            add_log("change-tool", e.target.id);
+            update_submit();
+            update_help();
+        });
 
         radios[0].click();
         radios[0].checked = true; // Shouldn't clicking a radio button also check it? :psyduck:
@@ -210,12 +210,21 @@ function draw_end_line(ctx, xoff, yoff, label) {
 }
 
 var landmark_data = {};
+var logger_data = [];
 
 function update_data(name, value) {
     "use strict";
     landmark_data[name] = value;
     $("#form-marks")[0].value = JSON.stringify(landmark_data);
     update_submit();
+    add_log("data-" + name, value);
+}
+
+function add_log(name, payload) {
+    "use strict";
+    var data = [Date.now(), name, payload];
+    logger_data.push(data);
+    $("#logger")[0].value = JSON.stringify(logger_data);
 }
 
 function update_help() {
@@ -233,7 +242,9 @@ function evt_keydown(evt) {
         var tools = Object.keys(Toolbox.tools);
         var idx = tools.indexOf(Toolbox.active());
         if (idx > -1 && idx < tools.length) {
-            $("#" + (tools[idx + 1])).click();
+            var tool = tools[idx + 1];
+            $("#" + tool).click();
+            add_log("key-forward", tool);
         }
     }
 }
@@ -241,6 +252,7 @@ function evt_keydown(evt) {
 function evt_submit (evt) {
     "use strict";
     if (update_submit()) {
+        add_log("submission", "");
         // can submit!
     } else {
         evt.preventDefault();
@@ -388,6 +400,7 @@ function initialize() {
         $("canvas").css("cursor", "not-allowed");
         update_submit = function() {};
     } else {
+        add_log("init", get_param("url", "protocol/fish_example.jpg"));
         $(".alert").hide();
         form[0].action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
         update_submit();
