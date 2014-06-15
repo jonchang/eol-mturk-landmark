@@ -2,107 +2,107 @@
     "J1": {
         "kind": "point",
         "anchor": "mouth",
-        "help": "The tip of the upper jaw."
+        "help": "Click the tip of the upper jaw."
     },
     "J2": {
         "kind": "point",
         "anchor": "mouth",
-        "help": "The intersection of the upper and lower jaw. (This is not simply where the skin meets!)"
+        "help": "Click the intersection of the upper and lower jaw. (This is not simply where the skin meets!)"
     },
     "J3": {
         "kind": "point",
         "anchor": "mouth",
-        "help": "The tip of the lower jaw."
+        "help": "Click the tip of the lower jaw."
     },
     "E1": {
         "kind": "point",
         "anchor": "eye",
-        "help": "The most anterior (forward) margin of the eye at its widest diameter."
+        "help": "Click the most anterior (forward) margin of the eye at its widest diameter."
     },
     "E2": {
         "kind": "point",
         "anchor": "eye",
-        "help": "The most posterior (rearward) margin of the eye at its widest diameter."
+        "help": "Click the most posterior (rearward) margin of the eye at its widest diameter."
     },
     "O1": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "The top point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the top point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
     },
     "O2": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "The posterior (rearward) \"elbow\" of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the posterior (rearward) \"elbow\" of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
     },
     "O3": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "The bottom point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the bottom point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
     },
     "O4": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "The top point of the operculum (gill cover)."
+        "help": "Click the top point of the operculum (gill cover)."
     },
     "O5": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "The posterior (rearward) point of the operculum (gill cover)."
+        "help": "Click the posterior (rearward) point of the operculum (gill cover)."
     },
     "P1": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "The base of the pectoral fin's top fin ray."
+        "help": "Click the base of the pectoral fin's top fin ray."
     },
     "P2": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "The distal tip of the pectoral fin's top fin ray."
+        "help": "Click the distal tip of the pectoral fin's top fin ray."
     },
     "P3": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "The distal tip of the pectoral fin's bottom fin ray."
+        "help": "Click the distal tip of the pectoral fin's bottom fin ray."
     },
     "P4": {
         "kind": "point",
         "anchor": "pectoral-fin",
-        "help": "The base of the pectoral fin's bottom fin ray."
+        "help": "Click the base of the pectoral fin's bottom fin ray."
     },
     "D1": {
         "kind": "point",
         "anchor": "dorsal-fin",
-        "help": "The base of the dorsal fin's anterior (forward) fin ray."
+        "help": "Click the base of the dorsal fin's anterior (forward) fin ray."
     },
     "D2": {
         "kind": "point",
         "anchor": "dorsal-fin",
-        "help": "The distal tip of the dorsal fin's anterior (forward) fin ray."
+        "help": "Click the distal tip of the dorsal fin's anterior (forward) fin ray."
     },
     "D3": {
         "kind": "point",
         "anchor": "dorsal-fin",
-        "help": "The distal tip of the dorsal fin's posterior (rearward) fin ray."
+        "help": "Click the distal tip of the dorsal fin's posterior (rearward) fin ray."
     },
     "D4": {
         "kind": "point",
         "anchor": "dorsal-fin",
-        "help": "The base of the dorsal fin's posterior (rearward) fin ray."
+        "help": "Click the base of the dorsal fin's posterior (rearward) fin ray."
     },
     "C1": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "The base of the caudal fin's top fin ray."
+        "help": "Click the base of the caudal fin's top fin ray."
     },
     "C2": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "The distal tip of the caudal fin's top fin ray."
+        "help": "Click the distal tip of the caudal fin's top fin ray."
     },
     "C3": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "The distal tip of the caudal fin's bottom fin ray."
+        "help": "Click the distal tip of the caudal fin's bottom fin ray."
     },
     "C4": {
         "kind": "point",
@@ -112,41 +112,41 @@
     "C5": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "The midpoint of the base of the tail (between C1 and C3)."
+        "help": "Click the midpoint of the base of the tail (between C1 and C3)."
     },
     "A1": {
         "kind": "point",
         "anchor": "anal-fin",
-        "help": "The base of the anal fin's anterior (forward) fin ray."
+        "help": "Click the base of the anal fin's anterior (forward) fin ray."
     },
     "A2": {
         "kind": "point",
         "anchor": "anal-fin",
-        "help": "The distal tip of the anal fin's anterior (forward) fin ray."
+        "help": "Click the distal tip of the anal fin's anterior (forward) fin ray."
     },
     "A3": {
         "kind": "point",
         "anchor": "anal-fin",
-        "help": "The distal tip of the anal fin's posterior (rearward) fin ray."
+        "help": "Click the distal tip of the anal fin's posterior (rearward) fin ray."
     },
     "A4": {
         "kind": "point",
         "anchor": "anal-fin",
-        "help": "The base of the anal fin's posterior (rearward) fin ray."
+        "help": "Click the base of the anal fin's posterior (rearward) fin ray."
     },
     "S1": {
         "kind": "curve",
         "anchor": "body-curves",
-        "help": "The top curve of the body, from J1 to C2, excluding the dorsal fins."
+        "help": "Click and drag over the top curve of the body, from J1 to C2, excluding the dorsal fins."
     },
     "S2": {
         "kind": "curve",
         "anchor": "body-curves",
-        "help": "The bottom curve of the body, from J3 to C3, excluding the ventral and anal fins."
+        "help": "Click and drag over the bottom curve of the body, from J3 to C3, excluding the ventral and anal fins."
     },
     "V1": {
         "kind": "line",
         "anchor": "measurements",
-        "help": "The longest straight line that can be drawn through the fish from top to the bottom, excluding fins."
+        "help": "Click and drag the longest straight line that can be drawn through the fish from top to the bottom, excluding fins."
     }
 }
