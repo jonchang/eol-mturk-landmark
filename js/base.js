@@ -237,6 +237,9 @@ function update_help() {
 
 function evt_keydown(evt) {
     "use strict";
+    if (document.activeElement.nodeName === "INPUT") {
+        return; // don't interrupt form typing
+    }
     var key = String.fromCharCode(evt.keyCode || evt.which);
     if (key == "f") {
         var tools = Object.keys(Toolbox.tools);
