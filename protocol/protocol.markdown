@@ -21,9 +21,9 @@ If you have questions, comments, or suggestions for improvement, contact Jonatha
 
 Fin rays are the soft spines that make up a fish's fins. They are clearly visible in the picture above on each of the labeled fins.
 
-* Pectoral fin: The fins that are on each side of the fish, usually near the eye. You will only see one pectoral fin as the second fin is on the other side of the fish.
-* Dorsal fin: The fins that lie on the back of the fish. If a fish has two dorsal fins, you will landmark the first (anterior) fin.
-* Pelvic fin: The fin below the pectoral fin.
+* Pectoral fin: A paired set of fins that are on each side of the fish, usually near the eye and posterior to the opercule. You will only see one pectoral fin as the second fin is on the other side of the fish.
+* Dorsal fin: The fins that lie on the back of the fish. If a fish has more than one dorsal fin, you will landmark the first (most anterior) fin.
+* Pelvic fin: A paired set of fins on the ventral side of the fish. If they are present, they are usually located between the anal and pectoral fins.
 * Anal fin: The fin that is on the ventral side of the fish behind the anus.
 * Caudal fin: The tail fin of the fish. The caudal fin has two main parts: the part where the backbone extends into the caudal fin (caudal peduncle), and the part that contains the fin rays. These can be distinguished by a change in color or texture.
 
@@ -75,9 +75,9 @@ P1: Top intersection of pectoral fin rays with the base of the pectoral fin.
 
 P2: The distal tip (farthest from body) of the pectoral fin's top fin ray.
 
-P3: Bottom intersection of pectoral fin rays with the base of the pectoral fin.
+P3: The distal tip (farthest from body) of the pectoral fin's bottom fin ray.
 
-P4: The distal tip (farthest from body) of the pectoral fin's bottom fin ray.
+P4: Bottom intersection of pectoral fin rays with the base of the pectoral fin.
 
 ## Dorsal fin
 
