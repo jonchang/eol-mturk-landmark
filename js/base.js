@@ -282,12 +282,17 @@ function review_on(txt) {
 
 function update_submit () {
     "use strict";
-    var have = Object.keys(landmark_data).length | 0;
-    var want = Object.keys(Toolbox.tools).length | 0;
+    var have = Object.keys(landmark_data);
+    var want = Object.keys(Toolbox.tools);
+    for (var ii = 0; ii < have.length; ii++) {
+        if (want.indexOf(have[ii]) > -1) {
+            $("#" + have[ii]).parent().css("text-decoration", "line-through");
+        }
+    }
     var submit = $("#submitButton")[0];
-    if (have < want) {
+    if (have.length < want.length) {
         submit.disabled = true;
-        submit.textContent = "Need " + (want - have) + " more points";
+        submit.textContent = "Need " + (want.length - have.length) + " more points";
         submit.className = "btn btn-warning btn-large";
         return false;
     } else {
