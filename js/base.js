@@ -255,8 +255,12 @@ function evt_keydown(evt) {
 function evt_submit (evt) {
     "use strict";
     if (update_submit()) {
-        add_log("submission", "");
         // can submit!
+        add_log("submission", "");
+        if (!get_param("turkSubmitTo")) {
+            evt.preventDefault();
+            window.location.href = "data:application/json;base64," + window.btoa($("#form-marks")[0].value)
+        }
     } else {
         evt.preventDefault();
     }
@@ -297,7 +301,11 @@ function update_submit () {
         return false;
     } else {
         submit.disabled = false;
-        submit.textContent = "Submit task";
+        if (get_param("turkSubmitTo")) {
+            submit.textContent = "Submit task";
+        } else {
+            submit.textContent = "Download data";
+        }
         submit.className = "btn btn-primary btn-large";
         return true;
     }
