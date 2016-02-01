@@ -407,6 +407,11 @@ function initialize() {
 
     load_resources(get_param("url", "protocol/fish_example.jpg"), "js/tool_defs.json");
 
+    if (get_param("taxa") !== "") {
+        $("#taxname").html("This is <i>" + get_param("taxa") + "</i>");
+        $("#taxa")[0].value = get_param("taxa");
+    }
+
     $("#assignmentId")[0].value = get_param("assignmentId");
     if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         var submit = $("#submitButton")[0];
