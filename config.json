@@ -1,4 +1,5 @@
 {
+    "__message": "Please <b><a href='protocol/protocol.html' target='_blank'>read the instructions</a></b> before you start!",
     "J1": {
         "kind": "point",
         "anchor": "mouth",
@@ -7,7 +8,7 @@
     "J2": {
         "kind": "point",
         "anchor": "mouth",
-        "help": "Click the intersection of the upper and lower jaw. (This is not simply where the skin meets!)"
+        "help": "Click the intersection of the upper and lower jaw. (This is not simply where the skin meets! See help for details)"
     },
     "J3": {
         "kind": "point",
@@ -27,17 +28,17 @@
     "O1": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "Click the top point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the top point of the preopercle. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O2": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "Click the posterior (rearward) \"elbow\" of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the posterior (rearward) \"elbow\" of the preopercle. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O3": {
         "kind": "point",
         "anchor": "operculum",
-        "help": "Click the bottom point of the preopercule. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and make a comment below."
+        "help": "Click the bottom point of the preopercle. (This can also be estimated as the length of the lower jaw). This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O4": {
         "kind": "point",
@@ -92,27 +93,32 @@
     "C1": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Click the base of the caudal fin's top fin ray."
+        "help": "Click the base of the caudal fin's uppermost principal fin ray."
     },
     "C2": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Click the distal tip of the caudal fin's top fin ray."
+        "help": "Click the distal tip of the caudal fin's uppermost principal fin ray."
     },
     "C3": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Click the distal tip of the caudal fin's bottom fin ray."
+        "help": "Click the distal tip of the caudal fin's lowermost principal fin ray."
     },
     "C4": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Bottom intersection of the tail fin rays with the body."
+        "help": "Click the base of the caudal fin's lowermost principal fin ray."
     },
     "C5": {
         "kind": "point",
         "anchor": "caudal-fin",
-        "help": "Click the midpoint of the base of the tail (between C1 and C3)."
+        "help": "Click the midpoint of the base of the tail (between C1 and C4)."
+    },
+    "C6": {
+        "kind": "point",
+        "anchor": "caudal-fin",
+        "help": "Click the distal tip of the caudal fin's middle fin rays (between C2 and C3)"
     },
     "A1": {
         "kind": "point",
@@ -134,19 +140,9 @@
         "anchor": "anal-fin",
         "help": "Click the base of the anal fin's posterior (rearward) fin ray."
     },
-    "S1": {
-        "kind": "curve",
-        "anchor": "body-curves",
-        "help": "Click and drag over the top curve of the body, from J1 to C2, excluding the dorsal fins."
-    },
-    "S2": {
-        "kind": "curve",
-        "anchor": "body-curves",
-        "help": "Click and drag over the bottom curve of the body, from J3 to C3, excluding the ventral and anal fins."
-    },
     "V1": {
         "kind": "line",
         "anchor": "measurements",
-        "help": "Click and drag the longest straight line that can be drawn through the fish from top to the bottom, excluding fins."
+        "help": "Click and drag your estimate of the fish's max body depth (see help)."
     }
 }

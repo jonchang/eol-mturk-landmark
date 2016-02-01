@@ -25,6 +25,12 @@ var Toolbox = (function () {
 
         for (var key in tool_defs) {
             if (tool_defs.hasOwnProperty(key)) {
+                if (/^__message$/.test(key)) {
+                    // set custom message and delete from config array
+                    $("#custom-message").html(tool_defs[key]);
+                    delete tool_defs[key];
+                    continue;
+                }
                 var lab = $('<label>').attr("class", "btn btn-default").text(key);
                 var newtool = $('<input>').attr({
                     type: "radio",
@@ -422,7 +428,8 @@ function initialize() {
     var form = $("#mturk_form");
     form.submit(evt_submit);
 
-    load_resources(get_param("url", "protocol/fish_example.jpg"), "js/tool_defs.json");
+    load_resources(get_param("url", "protocol/fish_example.jpg"),
+                   get_param("config", "config.json"));
 
     if (get_param("taxa") !== "") {
         $("#taxname").html("This is <i>" + get_param("taxa") + "</i>");
