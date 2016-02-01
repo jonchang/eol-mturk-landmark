@@ -44,6 +44,15 @@ var Toolbox = (function () {
                 });
                 $("#canvasbox").append(canvas);
                 tools[key] = canvas[0];
+
+                // make confidences
+                var conf = $('<div class="form-group"/>');
+                conf.append($('<label class="col-sm-2 control-label">' + key + "</label>"));
+                conf.append($('<label class="radio-inline"><input type="radio" name="' + key + '_conf" value="ok" checked>OK</label>'));
+                conf.append($('<label class="radio-inline"><input type="radio" name="' + key + '_conf" value="unsure">Unsure</label>'));
+                conf.append($('<label class="radio-inline"><input type="radio" name="' + key + '_conf" value="missing">Missing</label>'));
+                $("#confidence_box").append(conf);
+                $("#confidence_box").append($("<br>"));
             }
         }
 
