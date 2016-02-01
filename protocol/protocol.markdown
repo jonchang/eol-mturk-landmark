@@ -135,6 +135,10 @@ C4: Bottom intersection of the tail fin rays with the body.
 
 C5: The midpoint somewhere between C1 and C4 of the caudal fin's insertion on the body.
 
+C6: The distal tip of the caudal fin's middle fin rays, between C2 and C3. In a fish with a forked caudal fin, this is typically where the middle of the "fork" is. J1 and C6 combine to form the "fork length" measurement in the following image:
+
+![](img/fishlengthkit.jpg)
+
 Always mark the *principal ray*, and ignore the procurrent ray. See below for a drawing of procurrent vs principal fin rays: ![](img/finrays.png)
 
 Common mistake: marking the procurrent fin ray instead of the principal fin ray. ![](img/caudal_fin_wrong.png)
@@ -174,7 +178,9 @@ S2: The bottom curve of the body, from the [tip of the lower jaw (J3)](#mouth) t
 
 ![](img/V1.png)
 
-V1: The longest straight line that can be drawn through the body of the fish from top to bottom, excluding the fins.
+V1: The longest straight line that can be drawn through the body of the fish from the dorsal to the ventral margin, excluding the fins. Note that if the fish is rotated (e.g., the head is at the top of the image instead of the left), this measurement will also be rotated along with the fish. This is the "max body depth" measurement in the following image:
+
+![](img/fishlengthkit.jpg)
 
 # References
 
