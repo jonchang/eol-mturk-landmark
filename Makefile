@@ -32,7 +32,7 @@ build/protocol:
 	mkdir -p build/protocol
 
 stage: protocol | build/ build/protocol
-	cp -R css js fonts img index.html build
+	cp -R css js fonts img index.html *.json build
 	cp "$(PROTOCOL_FILES)" protocol/fish_example.jpg build/protocol
 
 deploy: stage | build/
