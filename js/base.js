@@ -249,6 +249,14 @@ function evt_keydown(evt) {
             $("#" + tool).click();
             add_log("key-forward", tool);
         }
+    } else if (key == "b") {
+        var tools = Object.keys(Toolbox.tools);
+        var idx = tools.indexOf(Toolbox.active());
+        if (idx > 0 && idx <= tools.length) {
+            var tool = tools[idx - 1];
+            $("#" + tool).click();
+            add_log("key-back", tool);
+        }
     }
 }
 
