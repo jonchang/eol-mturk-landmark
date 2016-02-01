@@ -20,7 +20,8 @@ help:
 .SUFFIXES: .html .markdown
 
 .markdown.html:
-	pandoc -s '$<' --toc --self-contained -t html5 -o '$@' -c buttondown.min.css --data-dir $$(dirname $<)
+	echo $<
+	cd $$(dirname $<) && pandoc -s $$(basename $<) --toc --self-contained -t html5 -o $$(basename $@) -c buttondown.min.css
 
 protocol: $(PROTOCOL_FILES)
 
