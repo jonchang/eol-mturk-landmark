@@ -38,6 +38,7 @@
                         This area will be filled with context-sensitive help content as you use different tools.
                     </div>
                 </div>
+                    <div class="alert alert-warning" role="alert" id="check-warning-message"></div>
             </div>
 
             <textarea rows="3" id="review"></textarea>
@@ -48,6 +49,7 @@
                 <input type="hidden" id="form-marks" name="marks">
                 <input type="hidden" id="logger" name="logger">
                 <input type="hidden" id="taxa" name="taxa">
+                <input type="hidden" id="warnings" name="warnings">
                 <div id="confidence_box">
                 <p>Below select how confident you are in your selections. Select <b>missing</b> if you believe that the point you are being asked to mark is biologically missing, for example, when a fin isn't there. Select <b>unsure</b> if the point is probably there, but you are uncertain of its exact location, for example, due to lighting or quality issues with the photo. Otherwise select <b>OK</b>.</p>
                 </div>
@@ -66,6 +68,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/json2.js"></script>
         <script src="js/base.js"></script>
+        <script src="js/check.js"></script>
         <script>
             $(document).ready(initialize);
         </script>

@@ -316,6 +316,18 @@ function update_submit () {
             $("#" + have[ii]).parent().css("text-decoration", "line-through");
         }
     }
+
+    var warning = $("#check-warning-message");
+    var checkmsg = check(landmark_data);
+    if (checkmsg.length > 0) {
+        var warnings = checkmsg.join("<br>");
+        warning.html("<b>Warning:</b><br>" + warnings);
+        warning.css("display", "block");
+    } else {
+        warning.css("display", "none");
+    }
+    $("#warnings")[0].value = JSON.stringify(checkmsg)
+
     var submit = $("#submitButton")[0];
     if (have.length < want.length) {
         submit.disabled = true;
