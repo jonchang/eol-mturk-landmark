@@ -60,6 +60,7 @@ var Toolbox = (function () {
                     conf.append($('<label class="radio-inline"><input type="radio" name="' + key + '_conf" value="missing">Missing</label>'));
                     $("#confidence_box").append(conf);
                     $("#confidence_box").append($("<br>"));
+                    $("#confidence_box").css("display", "block");
                 }
             }
         }
