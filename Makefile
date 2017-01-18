@@ -45,6 +45,7 @@ deploy: stage | build/
 		cd build/ \
 		&& git init . \
 		&& git add . \
+		&& touch .nojekyll \
 		&& git commit -m 'Deploy' \
 		&& git push 'git@github.com:jonchang/eol-mturk-landmark.git' master:gh-pages --force \
 		&& rm -rf .git \
