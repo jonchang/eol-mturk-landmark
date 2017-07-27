@@ -2,6 +2,14 @@
 
 A web-based image landmarking tool intended for use with Amazon Mechanical Turk. Currently this is not very general and will actually only work for one specific set of images, but it would not be too difficult to adapt it to your own uses.
 
+## Citation
+
+Code and data from this repository should be cited as:
+
+Chang, J. and Alfaro, M. E. (2015), Crowdsourced geometric morphometrics enable rapid large-scale collection and analysis of phenotypic data. Methods Ecol Evol, 7: 472–482. [doi:10.1111/2041-210X.12508](https://doi.org/10.1111/2041-210X.12508)
+
+Additional data is [available on Dryad (doi:10.5061/dryad.gh4k7)](https://doi.org/10.5061/dryad.gh4k7).
+
 ## Organization
 
 * app.html - entry point into the application.
