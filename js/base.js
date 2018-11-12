@@ -151,6 +151,38 @@ function draw_point(ctx, xoff, yoff, label) {
     return [xoff, yoff];
 }
 
+function draw_scaled_box(ctx, xoff, yoff, label) {
+    // 0.1 standard lengths
+    var box_scale_factor = 0.1;
+    var hit_x_size = 3
+
+    var keys = Object.keys(Toolbox.tools);
+    var pt1 = landmark_data[keys[0]];
+    var pt2 = landmark_data[keys[1]];
+    // must have points 1 and 2 defined
+    if (!pt1 || !pt2) return false;
+    // Euclidean distance
+    var distance = Math.pow(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[0] - pt2[1], 2), 0.5);
+    var boxwidth = distance * box_scale_factor;
+
+    ctx.beginPath();
+    ctx.moveTo(xoff - hit_x_size, yoff - hit_x_size);
+    ctx.lineTo(xoff + hit_x_size, yoff + hit_x_size);
+    ctx.moveTo(xoff - hit_x_size, yoff + hit_x_size);
+    ctx.lineTo(xoff + hit_x_size, yoff - hit_x_size);
+    ctx.closePath()
+    ctx.stroke()
+
+    ctx.strokeRect(xoff - boxwidth / 2, yoff - boxwidth / 2, boxwidth, boxwidth);
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = "5pt sans-serif";
+    ctx.fillText(label, xoff, yoff - hit_x_size * 2)
+
+    return [xoff, yoff];
+}
+
 function draw_start_curve(ctx, xoff, yoff, label) {
     "use strict";
     draw_point(ctx, xoff, yoff, label);
@@ -373,6 +405,9 @@ function evt_mousedown(e) {
             appbox.on("mousemove", evt_mousemove);
             appbox.on("mouseup", evt_mouseup);
             draw_start_curve(tool.ctx, x, y, tool.label);
+            break;
+        case "scaled_box":
+            ret = draw_scaled_box(tool.ctx, x, y, tool.label);
             break;
         default:
             console.log("Warning: Undefined tool type", tool.kind, "used.");
