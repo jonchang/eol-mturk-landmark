@@ -174,11 +174,6 @@ function draw_scaled_box(ctx, xoff, yoff, label) {
     ctx.stroke()
 
     ctx.strokeRect(xoff - boxwidth / 2, yoff - boxwidth / 2, boxwidth, boxwidth);
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.font = "5pt sans-serif";
-    ctx.fillText(label, xoff, yoff - hit_x_size * 2)
 
     return [xoff, yoff];
 }
