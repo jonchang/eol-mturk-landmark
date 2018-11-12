@@ -1,5 +1,12 @@
+var initial_zoom_level = -1;
 function check(obj) {
     acc = [];
+    if (initial_zoom_level < 0) { initial_zoom_level = window.devicePixelRatio; }
+    if (window.devicePixelRatio != initial_zoom_level) {
+        var zoom1 = Math.round(initial_zoom_level * 100);
+        var zoom2 = Math.round(window.devicePixelRatio * 100);
+        acc.push("Your zoom level changed while working! (Was: " + zoom1 + "%; Is now: " + zoom2 + "%) Please reload the page to start over.");
+    }
     if ((obj.D1 && obj.D1[0]) > (obj.D4 && obj.D4[0])) acc.push("D4 is to the left of D1, are they switched around?");
     if ((obj.A1 && obj.A1[0]) > (obj.A4 && obj.A4[0])) acc.push("A4 is to the left of A1, are they switched around?");
     if ((obj.E1 && obj.E1[0]) > (obj.E2 && obj.E2[0])) acc.push("E2 is to the left of E1, are they switched around?");
