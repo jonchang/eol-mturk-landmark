@@ -131,19 +131,20 @@ C2: The distal tip (farthest from body) of the caudal fin's top principal fin ra
 
 C3: The distal tip (farthest from body) of the caudal fin's bottom principal fin ray.
 
+Always mark the *principal ray*, and ignore the procurrent ray. See below for a drawing of procurrent vs principal fin rays: ![](img/finrays.png)
+
+Common mistake with C2 and C3: marking the procurrent fin ray instead of the principal fin ray. ![](img/caudal_fin_wrong2.png)
+
+Correct version: ![](img/caudal_fin_right2.png)
+
 C4: Bottom intersection of the tail fin rays with the body.
 
 C5: The midpoint somewhere between C1 and C4 of the caudal fin's insertion on the body.
 
-C6: The distal tip of the caudal fin's middle fin rays, between C2 and C3. In a fish with a forked caudal fin, this is typically where the middle of the "fork" is. J1 and C6 combine to form the "fork length" measurement in the following image:
+C6: The distal tip of the caudal fin's middle fin rays, between C2 and C3. In a fish with a forked caudal fin, this is typically where the middle of the "fork" is. In the case of an unforked caudal fin, this point will simply be at the end of the middle caudal fin rays. J1 and C6 combine to form the "fork length" measurement in the following image:
 
 ![](img/fishlengthkit.jpg)
 
-Always mark the *principal ray*, and ignore the procurrent ray. See below for a drawing of procurrent vs principal fin rays: ![](img/finrays.png)
-
-Common mistake: marking the procurrent fin ray instead of the principal fin ray. ![](img/caudal_fin_wrong.png)
-
-Correct version: ![](img/caudal_fin_right.png)
 
 ## Anal fin
 
