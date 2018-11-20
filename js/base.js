@@ -482,6 +482,10 @@ function initialize() {
         $("#taxa")[0].value = get_param("taxa");
     }
 
+    if (get_param("workerId") !== "") {
+        $("#workerId")[0].value = get_param("workerId");
+    }
+
     $("#assignmentId")[0].value = get_param("assignmentId");
     if (get_param("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         var submit = $("#submitButton")[0];
