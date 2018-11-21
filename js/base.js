@@ -165,6 +165,7 @@ function draw_scaled_box(ctx, xoff, yoff, label) {
     var distance = Math.pow(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[0] - pt2[1], 2), 0.5);
     var boxwidth = distance * box_scale_factor;
 
+    ctx.strokeStyle = "cyan";
     ctx.beginPath();
     ctx.moveTo(xoff - hit_x_size, yoff - hit_x_size);
     ctx.lineTo(xoff + hit_x_size, yoff + hit_x_size);
