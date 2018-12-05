@@ -86,7 +86,7 @@ var Toolbox = (function () {
             label: tool_name,
             kind: tool_defs[tool_name].kind,
             help: tool_defs[tool_name].help,
-            anchor: tool_defs[tool_name].anchor
+            helpurl: tool_defs[tool_name].helpurl
         };
     }
 
@@ -276,10 +276,13 @@ function add_log(name, payload) {
 function update_help() {
     "use strict";
     var tool = Toolbox.info();
-    var helpurl = get_param("helpurl", "protocol/protocol.html")
-    $("#infobox-content").html(
-        '<b>' + tool.label + '</b>: ' + tool.help + ' <a href="' + helpurl + '#' + tool.anchor + '" target="_blank">More info</a>'
-    );
+    if (tool.helpurl) {
+        $("#infobox-content").html(
+            '<b>' + tool.label + '</b>: ' + tool.help + ' <a href="' + tool.helpurl + '" target="_blank">More info</a>'
+        );
+    } else {
+        $("#infobox-content").html()
+    }
 }
 
 function evt_keydown(evt) {

@@ -2,147 +2,147 @@
     "__message": "Please <b><a href='protocol/protocol.html' target='_blank'>read the instructions</a></b> before you start!",
     "J1": {
         "kind": "point",
-        "anchor": "mouth",
+        "helpurl": "protocol/protocol.html#mouth",
         "help": "Click the tip of the upper jaw."
     },
     "J2": {
         "kind": "point",
-        "anchor": "mouth",
+        "helpurl": "protocol/protocol.html#mouth",
         "help": "Click the intersection of the upper and lower jaw. (This is not simply where the skin meets! See help for details)"
     },
     "J3": {
         "kind": "point",
-        "anchor": "mouth",
+        "helpurl": "protocol/protocol.html#mouth",
         "help": "Click the tip of the lower jaw."
     },
     "E1": {
         "kind": "point",
-        "anchor": "eye",
+        "helpurl": "protocol/protocol.html#eye",
         "help": "Click the most anterior (forward) margin of the eye at its widest diameter."
     },
     "E2": {
         "kind": "point",
-        "anchor": "eye",
+        "helpurl": "protocol/protocol.html#eye",
         "help": "Click the most posterior (rearward) margin of the eye at its widest diameter."
     },
     "O1": {
         "kind": "point",
-        "anchor": "operculum",
+        "helpurl": "protocol/protocol.html#operculum",
         "help": "Click the top point of the preopercle. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O2": {
         "kind": "point",
-        "anchor": "operculum",
+        "helpurl": "protocol/protocol.html#operculum",
         "help": "Click the posterior (rearward) \"elbow\" of the preopercle. This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O3": {
         "kind": "point",
-        "anchor": "operculum",
+        "helpurl": "protocol/protocol.html#operculum",
         "help": "Click the bottom point of the preopercle. (This can also be estimated as the length of the lower jaw). This may not be visible in certain fishes, if it is not, place the point at the top-left corner of the image and mark the point as missing below."
     },
     "O4": {
         "kind": "point",
-        "anchor": "operculum",
+        "helpurl": "protocol/protocol.html#operculum",
         "help": "Click the top point of the operculum (gill cover)."
     },
     "O5": {
         "kind": "point",
-        "anchor": "operculum",
+        "helpurl": "protocol/protocol.html#operculum",
         "help": "Click the posterior (rearward) point of the operculum (gill cover)."
     },
     "P1": {
         "kind": "point",
-        "anchor": "pectoral-fin",
+        "helpurl": "protocol/protocol.html#pectoral-fin",
         "help": "Click the base of the pectoral fin's top fin ray."
     },
     "P2": {
         "kind": "point",
-        "anchor": "pectoral-fin",
+        "helpurl": "protocol/protocol.html#pectoral-fin",
         "help": "Click the distal tip of the pectoral fin's top fin ray."
     },
     "P3": {
         "kind": "point",
-        "anchor": "pectoral-fin",
+        "helpurl": "protocol/protocol.html#pectoral-fin",
         "help": "Click the distal tip of the pectoral fin's bottom fin ray."
     },
     "P4": {
         "kind": "point",
-        "anchor": "pectoral-fin",
+        "helpurl": "protocol/protocol.html#pectoral-fin",
         "help": "Click the base of the pectoral fin's bottom fin ray."
     },
     "D1": {
         "kind": "point",
-        "anchor": "dorsal-fin",
+        "helpurl": "protocol/protocol.html#dorsal-fin",
         "help": "Click the base of the dorsal fin's anterior (forward) fin ray."
     },
     "D2": {
         "kind": "point",
-        "anchor": "dorsal-fin",
+        "helpurl": "protocol/protocol.html#dorsal-fin",
         "help": "Click the distal tip of the dorsal fin's anterior (forward) fin ray."
     },
     "D3": {
         "kind": "point",
-        "anchor": "dorsal-fin",
+        "helpurl": "protocol/protocol.html#dorsal-fin",
         "help": "Click the distal tip of the dorsal fin's posterior (rearward) fin ray."
     },
     "D4": {
         "kind": "point",
-        "anchor": "dorsal-fin",
+        "helpurl": "protocol/protocol.html#dorsal-fin",
         "help": "Click the base of the dorsal fin's posterior (rearward) fin ray."
     },
     "C1": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the base of the caudal fin's uppermost principal fin ray."
     },
     "C2": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the distal tip of the caudal fin's uppermost principal fin ray."
     },
     "C3": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the distal tip of the caudal fin's lowermost principal fin ray."
     },
     "C4": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the base of the caudal fin's lowermost principal fin ray."
     },
     "C5": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the midpoint of the base of the tail (between C1 and C4)."
     },
     "C6": {
         "kind": "point",
-        "anchor": "caudal-fin",
+        "helpurl": "protocol/protocol.html#caudal-fin",
         "help": "Click the distal tip of the caudal fin's middle fin rays (between C2 and C3)"
     },
     "A1": {
         "kind": "point",
-        "anchor": "anal-fin",
+        "helpurl": "protocol/protocol.html#anal-fin",
         "help": "Click the base of the anal fin's anterior (forward) fin ray."
     },
     "A2": {
         "kind": "point",
-        "anchor": "anal-fin",
+        "helpurl": "protocol/protocol.html#anal-fin",
         "help": "Click the distal tip of the anal fin's anterior (forward) fin ray."
     },
     "A3": {
         "kind": "point",
-        "anchor": "anal-fin",
+        "helpurl": "protocol/protocol.html#anal-fin",
         "help": "Click the distal tip of the anal fin's posterior (rearward) fin ray."
     },
     "A4": {
         "kind": "point",
-        "anchor": "anal-fin",
+        "helpurl": "protocol/protocol.html#anal-fin",
         "help": "Click the base of the anal fin's posterior (rearward) fin ray."
     },
     "V1": {
         "kind": "line",
-        "anchor": "measurements",
+        "helpurl": "protocol/protocol.html#measurements",
         "help": "Click and drag your estimate of the fish's max body depth (see help)."
     }
 }
