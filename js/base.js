@@ -152,8 +152,8 @@ function draw_point(ctx, xoff, yoff, label) {
 }
 
 function draw_scaled_box(ctx, xoff, yoff, label) {
-    // 0.1 standard lengths
-    var box_scale_factor = 0.1;
+    // 0.125 standard lengths
+    var box_scale_factor = 0.125;
     var hit_x_size = 3
 
     var keys = Object.keys(Toolbox.tools);
