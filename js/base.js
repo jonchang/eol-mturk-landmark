@@ -314,6 +314,7 @@ function evt_submit (evt) {
     "use strict";
     if (update_submit()) {
         // can submit!
+        add_log("DPR_end", window.devicePixelRatio);
         add_log("submission", "");
         if (!get_param("turkSubmitTo")) {
             evt.preventDefault();
@@ -500,6 +501,7 @@ function initialize() {
         update_submit = function() {};
     } else {
         add_log("init", get_param("url", "protocol/fish_example.jpg"));
+        add_log("DPR_start", window.devicePixelRatio);
         $(".alert").hide();
         form[0].action = get_param("turkSubmitTo") + "/mturk/externalSubmit";
         update_submit();
