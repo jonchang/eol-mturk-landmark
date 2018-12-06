@@ -162,7 +162,7 @@ function draw_scaled_box(ctx, xoff, yoff, label) {
     // must have points 1 and 2 defined
     if (!pt1 || !pt2) return false;
     // Euclidean distance
-    var distance = Math.sqrt(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[0] - pt2[1], 2));
+    var distance = Math.sqrt(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[1] - pt2[1], 2));
     var boxwidth = distance * box_scale_factor;
 
     ctx.strokeStyle = "cyan";
