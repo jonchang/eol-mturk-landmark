@@ -74,6 +74,7 @@ var Toolbox = (function () {
 
         radios[0].click();
         radios[0].checked = true; // Shouldn't clicking a radio button also check it? :psyduck:
+        $(document).trigger("toolbox_done");
     }
 
     function info(tool_name) {
@@ -329,8 +330,19 @@ function evt_review (evt) {
     "use strict";
     var parsed = JSON.parse($("#review")[0].value);
     for (var ii in parsed) {
-        if (parsed.hasOwnProperty(ii))
-            draw_landmark(parsed[ii][0], parsed[ii][1], ii);
+        if (parsed.hasOwnProperty(ii)) {
+            // Get tool type
+            ii = ii.trim();
+            var tool = Toolbox.info(ii);
+            switch (tool.kind) {
+                // too lazy to support all types now
+                case "point":
+                    draw_point(tool.ctx, parsed[ii][0], parsed[ii][1], ii);
+                    break;
+                default:
+                    console.log("Warning: Unsupported tool type in review ", tool.kind, ii);
+            }
+        }
     }
 }
 
@@ -340,7 +352,7 @@ function review_on(txt) {
     rev.css("display", "block");
     rev.on("change", evt_review);
     rev[0].value = txt;
-    evt_review();
+    $(document).on("toolbox_done", {}, evt_review);
 }
 
 function update_submit () {
