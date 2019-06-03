@@ -1,0 +1,40 @@
+/* Disable Bootstrap responsive layout -- this a desktop app */
+.container {
+    max-width: none !important;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#submitbox {
+    margin-top: 10px;
+}
+
+#appbox {
+    display: block;
+    position: relative;
+}
+
+#canvasbg {
+    max-width: 1280px;
+}
+
+canvas {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOISURBVEiJpVZPSCNnFP9NNxQKqzHQhpIIkWIy9M9CxFvGmkRTrTrgobKzQcQlpSwkp9jotlBYoQfZGlcvya2gSOLM4qmOSttgxkPOiYdtHbMHAzaHuBCzLtgubV8PG7vJMPlT%2BoOBebz3vd%2F73vve%2Bz5GPN5BKwgs7wFwF0APgFMA65IqKy0XAjC0YwTAwzDMbPXfTUSnANoieKNNgo4W8n8nEFj%2BxoiZ%2B6acPrsIBoNzFosFAGCxWBAMBuculN%2FKn7778VcCyzcNUlcpsDx7cHBw5HK5vt3f3zc6HI6rRCJRBIBEIlF0OBxXe3t7XS6Xa0lRlJzA8o6GDOLxTt1HRB9Go9E%2FrFYrJZPJcyIaISKGiBYBEBEtVuWRZDJ5brVaKRqN%2Fk5EDq0v8XinvsgCy984PDx8vLa29mYmk9mz2Wx3JFW%2BrOr%2BtZNUmQD85Pf733O5XCLHceP9%2Ff3bgod3Sqr8d8MUVSqVhVAo9MHq6uq5zWbzXztvBEmVL202253l5eVnoVDoVqVSWWhag42Njft2ux1TU1Mzkio%2Fb%2Ba8lsTv90%2F39vZCFMX7Wr2h2kQeAB2BhwEjx3EvJFX%2BUceXQkSA%2Fvn%2F2ev1Xh0dHXXF791bAXAJQJFUWWGIaP26icxmM5LJ5Nnw8PD3Wue1nVsT1GsDRflienraUiwWAQBEtCGp8l0DXrU%2FAKBUKsHn83UDeFC7WCdyD8MwdTY66AFejYpTAO5WO9DKVdKGO6j6hQHAenW2dAQCgblsNtv1rPtqURtOTVqu06XU6JhcLrcwOTmJeDz%2BCNUaAICh1tjpdH6eSqWMP0QiozqF9jAM86BBoT9Jp9NvjY2NVSRV%2FrJWUXdMZ2ZmVvL5PERR3BRYvlO7Cz0ILN%2BxtbWVODk5gSAIUa2%2BjsBkMi3F4%2FFfI5HIO4VCYasVicDynYVCQZyfn387Fos9MZlMS00JJFX%2B0%2Bv13g6Hwy85jhsXRfGpwPKjDZyPbm9vPx0YGBgPh8Mvh4aGPpNU%2BS%2BtHaN3owks%2F1E6nX4cDAbft9vtGBwcfNHX13fh8%2Fm6U6nUWTab7cpkMjfz%2BTxisdgvbrf7tqTKT%2FQC0SWokhjK5fLXm5ubkVwu17m7u4tSqQSz2YyJiQk4nc7K7OzsQ6PR%2BJ1e5C0JNGQrDMPMXctE9Eh7Whqh3StTO1WbTtlatHvpK0TUg9evCqVdgrZS9H%2FwD9NfrUmtcqn3AAAAAElFTkSuQmCC) 11 11, crosshair;
+}
+
+#review {
+    display: none;
+}
+
+.btn {
+    padding: 6px 5px;
+    font-size: 13px;
+}
+
+#confidence_box {
+    display: none;
+}

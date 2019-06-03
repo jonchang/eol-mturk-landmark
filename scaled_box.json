@@ -1,0 +1,18 @@
+{
+    "__message": "Please <b><a href='https://mturk2.no-jons.com/protocol.pdf' target='_blank'>read the instructions</a></b> before you start!",
+    "1": {
+        "kind": "point",
+        "help": "Click the most anterior (towards the mouth) tip of the body.",
+        "helpurl": "https://no-jons.com/protocol.pdf"
+    },
+    "2": {
+        "kind": "point",
+        "help": "Click the end of the fleshy part of the tail before the tail fin starts",
+        "helpurl": "https://no-jons.com/protocol.pdf"
+    },
+    "B": {
+        "kind": "scaled_box",
+        "help": "Place the box on at mid body depth just behind the pectoral fin so that the pectoral fin does not obscure the pattern within the box",
+        "helpurl": "https://no-jons.com/protocol.pdf"
+    }
+}

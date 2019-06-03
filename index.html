@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mark key points of a fish image</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="alert alert-error">
+                <h4>This is a preview.</h4> <p>Please accept the HIT before beginning work.<p></p>Recommended browsers: Firefox 42, Chrome 35, Safari 9.</p>
+            </div>
+            <span id="custom-message"></span>
+            <b>Keyboard shortcuts:</b> Use <code>f</code> to advance to the next step, <code>b</code> to go back. <b>Warning</b>! Do not <b>zoom in or out</b> while marking points. <b>Zoom to a comfortable level and reload the app <i>before</i> beginning work.</b>
+            <div id="taxname"></div>
+            <div class="btn-toolbar">
+                <input type="hidden" name="active-tool" id="active-tool" value=""/>
+                <div id="toolbox" class="btn-group tools" data-toggle="buttons"></div>
+            </div>
+
+
+            <div id="appbox">
+                <div id="canvasbox">
+                </div>
+                <img id="canvasbg">
+
+                <div id="infobox">
+                    <h3>Help</h3>
+                    <div id="infobox-content">
+                        This area will be filled with context-sensitive help content as you use different tools.
+                    </div>
+                </div>
+                    <div class="alert alert-warning" role="alert" id="check-warning-message"></div>
+            </div>
+
+            <textarea rows="3" id="review"></textarea>
+
+            <div id="submitbox">
+                <form method="POST" class="form-inline" id="mturk_form" name="mturk_form">
+                <input type="hidden" id="assignmentId" name="assignmentId">
+                <input type="hidden" id="form-marks" name="marks">
+                <input type="hidden" id="logger" name="logger">
+                <input type="hidden" id="taxa" name="taxa">
+                <input type="hidden" id="workerId" name="workerId">
+                <input type="hidden" id="warnings" name="warnings">
+                <div id="confidence_box">
+                <p>Below select how confident you are in your selections. Select <b>missing</b> if you believe that the point you are being asked to mark is biologically missing, for example, when a fin isn't there. Select <b>unsure</b> if the point is probably there, but you are uncertain of its exact location, for example, due to lighting or quality issues with the photo. Otherwise select <b>OK</b>.</p>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="comments" placeholder="Comment on the quality of this photo">
+                    <button type="submit" id="submitButton" class="btn btn-primary btn-large">Submit</button>
+                </div>
+                <!-- <button type="button" style="right: 1024px" class="btn btn-small">Reset points</button> -->
+                </form>
+            </div>
+
+        </div>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/json2.js"></script>
+        <script src="js/base.js"></script>
+        <script src="js/check.js"></script>
+        <script>
+            $(document).ready(initialize);
+        </script>
+    </body>
+</html>
+
